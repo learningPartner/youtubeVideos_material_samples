@@ -1,0 +1,1326 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular 22 Tutorial Roadmap</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --ink: #111827;
+      --muted: #64748b;
+      --line: #dbe3ef;
+      --card: rgba(255, 255, 255, 0.78);
+      --card-solid: #ffffff;
+      --dark: #07111f;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --violet: #7c3aed;
+      --green: #10b981;
+      --done-bg: #dcfce7;
+      --done-border: #86efac;
+      --done-ink: #166534;
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --radius: 8px;
+      --shadow: 0 22px 70px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(37, 99, 235, 0.18), transparent 30rem),
+        radial-gradient(circle at 86% 18%, rgba(124, 58, 237, 0.14), transparent 28rem),
+        radial-gradient(circle at 70% 90%, rgba(16, 185, 129, 0.14), transparent 30rem),
+        linear-gradient(135deg, #f8fbff 0%, #eef4ff 48%, #f7f9ff 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 78%);
+      z-index: -1;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1240px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      display: grid;
+      grid-template-columns: 1fr 0.72fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(7, 17, 31, 0.96), rgba(16, 30, 55, 0.94)),
+        var(--dark);
+      box-shadow: var(--shadow);
+      color: white;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      top: -220px;
+      background: conic-gradient(from 160deg, var(--cyan), var(--violet), var(--green), var(--blue), var(--cyan));
+      filter: blur(18px);
+      opacity: 0.42;
+      animation: rotateGlow 10s linear infinite;
+    }
+
+    .hero-content,
+    .hero-panel {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(125, 211, 252, 0.34);
+      background: rgba(255, 255, 255, 0.08);
+      color: #dbf7ff;
+      font-weight: 760;
+    }
+
+    .badge-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      margin: 20px 0 12px;
+      font-size: clamp(46px, 6.5vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .shine {
+      background: linear-gradient(90deg, #ffffff, #a7f3ff 38%, #c4b5fd 72%, #bbf7d0);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0;
+      color: #bdd0e7;
+      font-size: 19px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-chip {
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #eef7ff;
+      font-weight: 680;
+      font-size: 14px;
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-panel {
+      min-height: 250px;
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .stat {
+      display: grid;
+      grid-template-columns: 54px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-mark {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      font-weight: 900;
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .stat span {
+      color: #b9cbe2;
+      font-size: 14px;
+    }
+
+    .stat small {
+      color: #99f6e4;
+      font-weight: 840;
+    }
+
+    .workspace {
+      margin-top: 24px;
+      display: grid;
+      gap: 18px;
+      transition: grid-template-columns 320ms ease;
+    }
+
+    .workspace.overview {
+      grid-template-columns: 1fr;
+    }
+
+    .workspace.focus {
+      grid-template-columns: 330px 1fr;
+      align-items: start;
+    }
+
+    .topic-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      transition: all 320ms ease;
+    }
+
+    .focus .topic-board {
+      position: sticky;
+      top: 18px;
+      grid-template-columns: 1fr;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .topic-card {
+      min-height: 204px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 16px 50px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(18px);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+      animation: enterUp 620ms ease both;
+      animation-delay: calc(var(--i) * 55ms);
+    }
+
+    .focus .topic-card {
+      min-height: 112px;
+      padding: 16px;
+    }
+    .topic-card.done {
+      border-color: var(--done-border);
+      background: linear-gradient(135deg, var(--done-bg), #f0fdf4);
+      box-shadow: 0 18px 54px rgba(22, 101, 52, 0.14);
+    }
+
+    .topic-card.done .topic-icon {
+      background: #bbf7d0;
+      color: var(--done-ink);
+      border-color: var(--done-border);
+    }
+
+    .topic-card.done h2 {
+      color: var(--done-ink);
+    }
+
+    .topic-card:hover,
+    .topic-card.active {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--accent) 52%, white);
+      background: var(--card-solid);
+      box-shadow: 0 22px 58px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+    .topic-card.done:hover,
+    .topic-card.done.active {
+      border-color: var(--done-border);
+      background: linear-gradient(135deg, var(--done-bg), #f0fdf4);
+      box-shadow: 0 22px 58px rgba(22, 101, 52, 0.18);
+    }
+
+    .focus .topic-card:hover,
+    .focus .topic-card.active {
+      transform: translateX(4px);
+    }
+
+    .topic-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topic-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--accent) 14%, white);
+      color: color-mix(in srgb, var(--accent) 86%, black);
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, white);
+      font-weight: 950;
+    }
+
+    .topic-card h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .topic-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .topic-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 740;
+    }
+
+    .topic-count {
+      color: color-mix(in srgb, var(--accent) 80%, black);
+    }
+    .topic-status {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4338ca;
+      font-size: 12px;
+      font-weight: 860;
+      white-space: nowrap;
+    }
+
+    .topic-status.done {
+      background: #bbf7d0;
+      color: var(--done-ink);
+    }
+
+    .details {
+      display: none;
+      min-height: 620px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      animation: detailIn 420ms ease both;
+    }
+
+    .focus .details {
+      display: block;
+    }
+
+    .details-head {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      color: white;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.24), transparent 20rem),
+        linear-gradient(135deg, color-mix(in srgb, var(--detail-accent) 86%, #111827), #0f172a);
+    }
+
+
+    .lesson-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.12);
+      font-weight: 780;
+      font-size: 14px;
+    }
+
+    .details-head h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 18px 0 10px;
+      font-size: clamp(34px, 4.5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .angular-logo {
+      position: absolute;
+      right: 34px;
+      bottom: 28px;
+      z-index: 1;
+      width: 150px;
+      height: auto;
+      max-height: 162px;
+      object-fit: contain;
+
+    }
+
+    .details-head p {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0;
+      color: #d7e7f8;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .details-body {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .subtabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .subtab {
+      padding: 10px 13px;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--muted);
+      font-weight: 760;
+      transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .subtab:hover,
+    .subtab.active {
+      color: var(--ink);
+      border-color: color-mix(in srgb, var(--detail-accent) 50%, white);
+      background: color-mix(in srgb, var(--detail-accent) 10%, white);
+      transform: translateY(-2px);
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .lesson-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: 0 14px 44px rgba(15, 23, 42, 0.07);
+    }
+
+    .lesson-card h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      letter-spacing: 0;
+    }
+
+    .lesson-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 16px;
+    }
+
+    .points {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .code-blocks {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .code-block {
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid #172033;
+      background: #020617;
+      box-shadow: 0 18px 42px rgba(2, 6, 23, 0.22);
+    }
+
+    .code-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 13px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      color: #cbd5e1;
+      background: #0f172a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    pre {
+      margin: 0;
+      padding: 15px;
+      overflow-x: auto;
+      color: #d1fae5;
+      font: 760 15px/1.55 "Cascadia Code", "Fira Code", Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .url-line {
+      color: #93c5fd;
+    }
+
+    .point {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid color-mix(in srgb, var(--detail-accent) 18%, var(--line));
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--detail-accent) 7%, white);
+      color: #243041;
+      font-weight: 650;
+    }
+
+    .point span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--detail-accent) 14%, white);
+      color: color-mix(in srgb, var(--detail-accent) 86%, black);
+      font-weight: 940;
+      font-size: 13px;
+    }
+
+    .video-flow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 15px 15px 15px 50px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f8fbff;
+      color: #253244;
+      font-weight: 720;
+    }
+
+    .flow-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 13px;
+      top: 13px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--detail-accent);
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .empty-state {
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.56);
+      text-align: center;
+      padding: 32px;
+    }
+
+    .empty-state strong {
+      display: block;
+      color: var(--ink);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .reset-row {
+      display: none;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+
+    .focus+.reset-row {
+      display: flex;
+    }
+
+    .reset-btn {
+      cursor: pointer;
+      padding: 11px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 780;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    @keyframes rotateGlow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes enterUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes detailIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1120px) {
+
+      .hero,
+      .workspace.focus,
+      .lesson-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus .topic-board {
+        position: static;
+        grid-template-columns: repeat(2, 1fr);
+        max-height: none;
+      }
+
+      .topic-board {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 24px, 1240px);
+        padding-top: 12px;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+
+      .topic-board,
+      .focus .topic-board {
+        grid-template-columns: 1fr;
+      }
+
+      .details-head,
+      .details-body {
+        padding: 20px;
+      }
+
+      .angular-logo {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 92px;
+        max-height: 96px;
+        margin-top: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge"><span class="badge-dot"></span> YouTube Tutorial Planner</div>
+        <h1><span class="shine">Angular 22</span><br>Tutorial Roadmap</h1>
+
+        <div class="hero-actions">
+          <span class="hero-chip">Basic Series</span>
+          <span class="hero-chip">Advanced Series</span>
+          <span class="hero-chip">Episode-by-Episode Flow</span>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Series summary">
+        <div class="stat">
+          <div class="stat-mark">B</div>
+          <div><strong>Basic Track</strong><span>Setup, binding, directives, routing, forms, APIs</span></div>
+          <small>Start here</small>
+        </div>
+        <div class="stat">
+          <div class="stat-mark">A</div>
+          <div><strong>Advanced Track</strong><span>Signals, architecture, performance, auth, deployment</span></div>
+          <small>Next</small>
+        </div>
+        <div class="stat">
+          <div class="stat-mark">R</div>
+          <div><strong>Roadmap View</strong><span>Click any topic to see what will be covered inside it</span></div>
+          <small>Explore</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace overview" aria-label="Angular 22 tutorial topic workspace">
+      <div class="topic-board" id="topicBoard"></div>
+      <article class="details" id="detailsPanel" aria-live="polite">
+        <div class="empty-state">
+          <div>
+            <strong>Select a topic</strong>
+            <span>All tutorial tabs are visible first. Click one topic to open the detailed teaching plan.</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="reset-row">
+      <button class="reset-btn" id="resetBtn" type="button">Show Full Roadmap</button>
+    </div>
+  </main>
+
+  <script>
+    const topics = [
+      {
+        id: "setup",
+        done: true,
+        title: "Installation & Setup",
+        series: "Basic Series",
+        accent: "#2563eb",
+        icon: "01",
+        summary: "Install the tooling, create the first project, and run Angular locally.",
+        intro: "This first episode should make beginners comfortable with the complete setup flow before writing component code.",
+        subtabs: [
+          {
+            title: "Node.js Setup",
+            description: "Explain why Node.js is required for Angular development and how to verify the installed version.",
+            points: ["Install Node.js LTS", "Check node and npm version", "Explain npm package usage"],
+            snippets: [
+              { label: "Download URL", code: "https://nodejs.org/en/download" },
+              { label: "Verify Installation", code: "node --version\nnpm --version" }
+            ]
+          },
+          {
+            title: "Angular CLI",
+            description: "Install Angular CLI and use it as the main command-line tool for project creation and development.",
+            points: ["Install Angular CLI", "Check CLI version", "Understand ng command basics"],
+            snippets: [
+              { label: "Install Angular CLI", code: "npm install -g @angular/cli" },
+              { label: "Check Angular CLI Version", code: "ng version" }
+            ]
+          },
+          {
+            title: "Create & Run Project",
+            description: "Generate a new Angular project and run it in the browser for the first time.",
+            points: ["Create project", "Open folder structure", "Run development server", "Explain localhost URL"],
+            snippets: [
+              { label: "Create Project", code: "ng new angular-22-demo" },
+              { label: "Run Project", code: "cd angular-22-demo\nng serve\n\nhttp://localhost:4200" }
+            ]
+          }
+        ],
+        flow: ["Show prerequisite setup", "Install CLI", "Create Angular 22 app", "Run app", "Preview folder structure"]
+      },
+      {
+        id: "components",
+        done: true,
+        title: "Components",
+        series: "Basic Series",
+        accent: "#0ea5e9",
+        icon: "CP",
+        summary: "Create Angular components, render them in the app, and understand basic TypeScript.",
+        intro: "Learn how Angular screens are built using reusable components.",
+        subtabs: [
+          {
+            title: "Create Component",
+            description: "Create a new Angular component and understand the generated files.",
+            points: ["Use Angular CLI command", "Component class file", "HTML template file", "CSS style file"],
+            snippets: [
+              { label: "Create Component Command", code: "ng generate component user-profile\n\n# short form\nng g c user-profile" }
+            ]
+          },
+          {
+            title: "Render Component",
+            description: "Use the component selector to display one component inside another component.",
+            points: ["Understand selector", "Render in app component", "Create parent-child layout", "Check output in browser"],
+            snippets: [
+              { label: "Render In Template", code: "<app-user-profile></app-user-profile>" }
+            ]
+          },
+          {
+            title: "TypeScript Intro",
+            description: "Understand the basic TypeScript syntax commonly used inside Angular components.",
+            points: ["Variable declaration", "String, number, boolean", "Arrays and objects", "Simple functions"]
+          }
+        ],
+        flow: ["Create component", "Understand generated files", "Render component", "Cover TypeScript basics"]
+      },
+      {
+        id: "binding",
+        done: true,
+        title: "Data Binding",
+        series: "Basic Series",
+        accent: "#7c3aed",
+        icon: "DB",
+        summary: "Interpolation, property binding, event binding, and two-way binding.",
+        intro: "This is one of the most important beginner episodes because it connects component data with the UI.",
+        subtabs: [
+          {
+            title: "One-Way Binding",
+            description: "Show how data moves from component to template and template events back to component logic.",
+            points: ["Interpolation", "Property binding", "Event binding", "Class and style binding"]
+          },
+          {
+            title: "Two-Way Binding",
+            description: "Demonstrate ngModel and explain when it is useful for simple form inputs.",
+            points: ["Import FormsModule", "Use ngModel", "Update input and component together", "Common beginner mistakes"],
+            snippets: [
+              { label: "Two-Way Binding", code: "<input [(ngModel)]=\"userName\" />\n<p>{{ userName }}</p>" }
+            ]
+          },
+          {
+            title: "Mini Practice",
+            description: "Build a small live example where user input updates the screen immediately.",
+            points: ["Name preview", "Button click", "Disable button", "Dynamic CSS class"]
+          }
+        ],
+        flow: ["Start with variable display", "Add property binding", "Handle button events", "Finish with two-way binding"]
+      },
+      {
+        id: "routing",
+        done: true,
+        title: "Routing",
+        series: "Basic Series",
+        accent: "#06b6d4",
+        icon: "RT",
+        summary: "Create pages, configure routes, navigate, and read route parameters.",
+        intro: "Routing helps the audience understand how Angular becomes a real multi-page application.",
+        subtabs: [
+          {
+            title: "Route Setup",
+            description: "Configure app routes and connect them to components.",
+            points: ["Create components", "Define routes", "Use router-outlet", "Default route"],
+            snippets: [
+              { label: "Create Pages", code: "ng g c pages/home\nng g c pages/about\nng g c pages/contact" }
+            ]
+          },
+          {
+            title: "Navigation",
+            description: "Use routerLink and active styles for clean navigation.",
+            points: ["routerLink", "routerLinkActive", "Navigate by code", "404 page"],
+            snippets: [
+              { label: "Navigation Links", code: "<a routerLink=\"/home\" routerLinkActive=\"active\">Home</a>\n<a routerLink=\"/about\" routerLinkActive=\"active\">About</a>" }
+            ]
+          },
+          {
+            title: "Route Params",
+            description: "Read IDs and use them to open detail pages.",
+            points: ["Dynamic route", "Read param", "Product detail", "Query params"]
+          }
+        ],
+        flow: ["Create pages", "Configure routes", "Add nav menu", "Read route parameters"]
+      },
+      {
+        id: "directives",
+        done: true,
+        title: "Directives",
+        series: "Basic Series",
+        accent: "#10b981",
+        icon: "DR",
+        summary: "Use ngIf, ngFor, ngClass, and ngStyle for dynamic templates.",
+        intro: "Directives teach how Angular changes the DOM and styling based on application data.",
+        subtabs: [
+          {
+            title: "Structural Directives",
+            description: "Cover conditional rendering and list rendering with practical examples.",
+            points: ["ngIf", "ngFor", "Track list data", "Empty state"]
+          },
+          {
+            title: "Attribute Directives",
+            description: "Use directives that change the appearance or behavior of existing elements.",
+            points: ["ngClass", "ngStyle", "Dynamic classes", "Conditional styling"]
+          },
+          {
+            title: "Practice UI",
+            description: "Build a simple product or student list with show, hide, and highlight behavior.",
+            points: ["List rendering", "Status badge", "Selected row", "No data message"]
+          }
+        ],
+        flow: ["Explain directive purpose", "Show condition", "Show list", "Add class and style examples"]
+      },
+      {
+        id: "control-flow",
+        done: true,
+        title: "Control Flow",
+        series: "Basic Series",
+        accent: "#f59e0b",
+        icon: "CF",
+        summary: "Explain modern template control flow using @if, @for, @switch, and @empty.",
+        intro: "This episode can show the newer Angular template syntax in a clean, modern way.",
+        subtabs: [
+          {
+            title: "@if",
+            description: "Render content conditionally with readable blocks.",
+            points: ["Simple condition", "else block", "Loading state", "Permission example"],
+            snippets: [
+              { label: "@if Example", code: "@if (isLoggedIn) {\n  <h2>Welcome back</h2>\n} @else {\n  <h2>Please login</h2>\n}" }
+            ]
+          },
+          {
+            title: "@for",
+            description: "Loop over arrays and explain tracking for better rendering.",
+            points: ["Render lists", "track expression", "@empty block", "Index and count values"],
+            snippets: [
+              { label: "@for Example", code: "@for (user of users; track user.id) {\n  <p>{{ user.name }}</p>\n} @empty {\n  <p>No users found</p>\n}" }
+            ]
+          },
+          {
+            title: "@switch",
+            description: "Show how multiple UI states can be handled cleanly in templates.",
+            points: ["Status UI", "Multiple cases", "Default case", "Cleaner templates"]
+          }
+        ],
+        flow: ["Compare old and new style", "Build @if example", "Build @for list", "Add @empty and @switch"]
+      },
+      {
+        id: "Template_Forms",
+        done: true,
+        title: "Template Forms",
+        series: "Basic Series",
+        accent: "#ec4899",
+        icon: "TF",
+        summary: "Template-driven forms and validation messages.",
+        intro: "Forms are essential for real Angular projects, so this can be split into practical episodes.",
+        subtabs: [
+          {
+            title: "Create Form",
+            description: "Use ngModel for simple form input and beginner-friendly validation.",
+            points: ["FormsModule", "ngModel", "Submit form", "Required validation"],
+            snippets: [
+              { label: "Template Form", code: "<form #userForm=\"ngForm\" (ngSubmit)=\"saveUser(userForm.value)\">\n  <input name=\"name\" ngModel required>\n  <button type=\"submit\">Save</button>\n</form>" }
+            ]
+          }, 
+          {
+            title: "Validation",
+            description: "Show user-friendly validation messages and disable invalid submit actions.",
+            points: ["Required", "Email", "Min length", "Custom message display"]
+          }
+        ],
+        flow: ["Start with template form", "Add validation", "Show clean error messages"]
+      },
+
+      {
+        id: "Reactive_Forms",
+        done: true,
+        title: "Reactive Forms",
+        series: "Basic Series",
+        accent: "#ec4899",
+        icon: "RF",
+        summary: "T reactive forms, and validation messages.",
+        intro: "Forms are essential for real Angular projects, so this can be split into practical episodes.",
+        subtabs: [
+          {
+            title: "Template Forms",
+            description: "Use ngModel for simple form input and beginner-friendly validation.",
+            points: ["FormsModule", "ngModel", "Submit form", "Required validation"],
+            snippets: [
+              { label: "Template Form", code: "<form #userForm=\"ngForm\" (ngSubmit)=\"saveUser(userForm.value)\">\n  <input name=\"name\" ngModel required>\n  <button type=\"submit\">Save</button>\n</form>" }
+            ]
+          },
+          {
+            title: "Reactive Forms",
+            description: "Use FormGroup and FormControl for scalable forms.",
+            points: ["ReactiveFormsModule", "FormGroup", "FormControl", "FormBuilder"],
+            snippets: [
+              { label: "Reactive Form Model", code: "userForm = new FormGroup({\n  name: new FormControl(''),\n  email: new FormControl('')\n});" }
+            ]
+          },
+          {
+            title: "Validation",
+            description: "Show user-friendly validation messages and disable invalid submit actions.",
+            points: ["Required", "Email", "Min length", "Custom message display"]
+          }
+        ],
+        flow: ["Start with reactive form", "Add validation", "Show clean error messages"]
+      },
+      {
+        id: "signal",
+        done: true,
+        title: "Signal Basics",
+        series: "Basic Series",
+        accent: "#ec4899",
+        icon: "SG",
+        summary: "What are Signal, Update, Read",
+        intro: "Forms are essential for real Angular projects, so this can be split into practical episodes.",
+        subtabs: [
+          {
+            title: "How to Create Signal",
+            description: "Signal",
+            points: ["Signal",],
+            snippets: [
+              { label: "" }
+            ]
+          },
+          {
+            title: "How to Access / Read Signal",
+            description: "Signal; Read",
+            points: ["Signal"], 
+          },
+          {
+            title: "How to Update Signal",
+            description: "Update", 
+          }
+        ],
+        flow: ["Start with reactive form", "Add validation", "Show clean error messages"]
+      },
+
+        {
+        id: "singnalForm",
+        done: true,
+        title: "Signal Forms",
+        series: "Basic Series",
+        accent: "#ec4899",
+        icon: "RF",
+        summary: "Signal forms, and validation messages.",
+        intro: "Forms are essential for real Angular projects, so this can be split into practical episodes.",
+        subtabs: [
+           
+          {
+            title: "Signal Forms",
+            description: "Use FormGroup and FormControl for scalable forms.",
+            points: ["ReactiveFormsModule", "FormGroup", "FormControl", "FormBuilder"],
+            snippets: [
+              { label: "Reactive Form Model", code: "userForm = new FormGroup({\n  name: new FormControl(''),\n  email: new FormControl('')\n});" }
+            ]
+          },
+          {
+            title: "Validation",
+            description: "Show user-friendly validation messages and disable invalid submit actions.",
+            points: ["Required", "Email", "Min length", "Custom message display"]
+          }
+        ],
+        flow: ["Start with reactive form", "Add validation", "Show clean error messages"]
+      },
+      {
+        id: "api",
+        done: false,
+        title: "API Integration",
+        series: "Basic Series",
+        accent: "#ef4444",
+        icon: "API",
+        summary: "GET, POST, PUT, DELETE, service layer, loading states, and errors.",
+        intro: "This is where the tutorial starts feeling like a real application by connecting Angular with backend APIs.",
+        subtabs: [
+          {
+            title: "GET Request",
+            description: "Fetch data from an API and display it in the component template.",
+            points: ["Create service", "Use HttpClient", "Display response", "Loading state"],
+            snippets: [
+              { label: "Create Service", code: "ng generate service services/user" },
+              { label: "GET API", code: "this.http.get('https://jsonplaceholder.typicode.com/users')" }
+            ]
+          },
+          {
+            title: "POST & PUT",
+            description: "Send form data to the backend and update existing records.",
+            points: ["Create item", "Edit item", "Payload object", "Success handling"],
+            snippets: [
+              { label: "POST / PUT", code: "this.http.post(apiUrl, userData)\nthis.http.put(`${apiUrl}/${id}`, userData)" }
+            ]
+          },
+          {
+            title: "DELETE & Errors",
+            description: "Delete records and handle failure states in a professional UI.",
+            points: ["Delete action", "Confirm before delete", "Error message", "Retry option"],
+            snippets: [
+              { label: "DELETE API", code: "this.http.delete(`${apiUrl}/${id}`)" }
+            ]
+          }
+        ],
+        flow: ["Create service", "Call GET API", "Submit POST data", "Update with PUT", "Delete with confirmation"]
+      },
+      {
+        id: "signals",
+        done: false,
+        title: "Signals",
+        series: "Basic + Advanced",
+        accent: "#14b8a6",
+        icon: "SG",
+        summary: "Signal state, computed values, effects, and component communication ideas.",
+        intro: "Signals are a major modern Angular topic and deserve a clean visual explanation with small examples.",
+        subtabs: [
+          {
+            title: "Signal Basics",
+            description: "Create signal state and update it from the template.",
+            points: ["signal()", "Read signal value", "set()", "update()"],
+            snippets: [
+              { label: "Signal Counter", code: "count = signal(0);\n\nincrease() {\n  this.count.update(value => value + 1);\n}" }
+            ]
+          },
+          {
+            title: "Computed",
+            description: "Derive values automatically from existing signal state.",
+            points: ["computed()", "Derived values", "Filtering example", "Cart total example"],
+            snippets: [
+              { label: "Computed Value", code: "total = computed(() => this.price() * this.quantity());" }
+            ]
+          },
+          {
+            title: "Effect",
+            description: "React to signal changes for logging, persistence, or side effects.",
+            points: ["effect()", "When to use", "When to avoid", "Cleanup mindset"]
+          }
+        ],
+        flow: ["Explain reactive state", "Build counter", "Add computed value", "Use effect carefully"]
+      },
+      {
+        id: "advanced",
+        done: false,
+        title: "Advanced Angular",
+        series: "Advanced Series",
+        accent: "#111827",
+        icon: "AD",
+        summary: "Services, guards, interceptors, lazy loading, performance, auth, and deployment.",
+        intro: "This section can become your second series after the basic track is complete.",
+        subtabs: [
+          {
+            title: "Architecture",
+            description: "Organize folders, shared components, services, models, and feature areas.",
+            points: ["Feature structure", "Shared UI", "Services", "Models"]
+          },
+          {
+            title: "Security & APIs",
+            description: "Add guards, interceptors, auth tokens, and protected routes.",
+            points: ["Route guards", "HTTP interceptor", "Token handling", "Protected dashboard"]
+          },
+          {
+            title: "Performance & Deploy",
+            description: "Make the app faster and prepare it for production hosting.",
+            points: ["Lazy loading", "Build command", "Environment files", "Deployment flow"]
+          }
+        ],
+        flow: ["Split into feature modules or areas", "Add auth flow", "Improve performance", "Build and deploy"]
+      }
+    ];
+
+    const workspace = document.getElementById("workspace");
+    const topicBoard = document.getElementById("topicBoard");
+    const detailsPanel = document.getElementById("detailsPanel");
+    const resetBtn = document.getElementById("resetBtn");
+
+    let activeTopic = null;
+    let activeSubtab = 0;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderTopics() {
+      topicBoard.innerHTML = topics.map((topic, index) => `
+        <button class="topic-card ${activeTopic === topic.id ? "active" : ""} ${topic.done ? "done" : ""}" type="button" data-topic="${topic.id}" style="--accent: ${topic.accent}; --i: ${index};">
+          <span class="topic-top">
+            <span class="topic-icon">${topic.icon}</span>
+            <span>
+              <h2>${topic.title}</h2>
+            </span>
+          </span>
+          <p>${topic.summary}</p>
+          <span class="topic-meta">
+            <span>${topic.series}</span>
+            <span class="topic-status ${topic.done ? "done" : ""}">${topic.done ? "Done" : "Pending"}</span>
+            <span class="topic-count">${topic.subtabs.length} subtopics</span>
+          </span>
+        </button>
+      `).join("");
+    }
+
+    function renderDetails(topicId) {
+      const topic = topics.find((item) => item.id === topicId);
+      if (!topic) {
+        return;
+      }
+
+      const subtab = topic.subtabs[activeSubtab] || topic.subtabs[0];
+      detailsPanel.style.setProperty("--detail-accent", topic.accent);
+      detailsPanel.innerHTML = `
+        <header class="details-head">
+          <span class="lesson-label">${topic.done ? "Done Â· " : "Pending Â· "}${topic.series} Â· Episode Topic</span>
+          <h2>${topic.title}</h2>
+          <img class="angular-logo" src="logo.png" alt="Angular logo">
+        </header>
+        <div class="details-body">
+          <div class="subtabs">
+            ${topic.subtabs.map((tab, index) => `
+              <button class="subtab ${index === activeSubtab ? "active" : ""}" type="button" data-subtab="${index}">${tab.title}</button>
+            `).join("")}
+          </div>
+          <article class="lesson-card">
+            <h3>${subtab.title}</h3>
+            <p>${subtab.description}</p>
+            <div class="points">
+              ${subtab.points.map((point, index) => `<div class="point"><span>${index + 1}</span>${point}</div>`).join("")}
+            </div>
+            ${subtab.snippets ? `
+              <div class="code-blocks">
+                ${subtab.snippets.map((snippet) => `
+                  <div class="code-block">
+                    <div class="code-title">${snippet.label}</div>
+                    <pre class="${snippet.code.startsWith("http") ? "url-line" : ""}">${escapeHtml(snippet.code)}</pre>
+                  </div>
+                `).join("")}
+              </div>
+            ` : ""}
+          </article>
+        </div>
+      `;
+    }
+
+    topicBoard.addEventListener("click", (event) => {
+      const card = event.target.closest(".topic-card");
+      if (!card) {
+        return;
+      }
+
+      activeTopic = card.dataset.topic;
+      activeSubtab = 0;
+      workspace.classList.remove("overview");
+      workspace.classList.add("focus");
+      renderTopics();
+      renderDetails(activeTopic);
+      detailsPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    detailsPanel.addEventListener("click", (event) => {
+      const subtab = event.target.closest(".subtab");
+      if (!subtab || !activeTopic) {
+        return;
+      }
+
+      activeSubtab = Number(subtab.dataset.subtab);
+      renderDetails(activeTopic);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      activeTopic = null;
+      activeSubtab = 0;
+      workspace.classList.remove("focus");
+      workspace.classList.add("overview");
+      renderTopics();
+      detailsPanel.innerHTML = `
+        <div class="empty-state">
+          <div>
+            <strong>Select a topic</strong>
+            <span>All tutorial tabs are visible first. Click one topic to open the detailed teaching plan.</span>
+          </div>
+        </div>
+      `;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderTopics();
+  </script>
+</body>
+
+</html>
+
+
+

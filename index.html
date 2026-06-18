@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>90 Days Notice Period - Developer Career Guide</title>
+  <style>
+    :root {
+      --bg: #050812;
+      --bg-2: #071323;
+      --card: rgba(12, 24, 44, 0.72);
+      --card-strong: rgba(18, 36, 66, 0.88);
+      --line: rgba(148, 187, 255, 0.18);
+      --text: #f5f9ff;
+      --muted: #aebfd6;
+      --cyan: #36d6ff;
+      --blue: #4e8cff;
+      --purple: #9d6cff;
+      --green: #48e39b;
+      --orange: #ffb14a;
+      --red: #ff5e78;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(54, 214, 255, 0.24), transparent 28rem),
+        radial-gradient(circle at 82% 20%, rgba(157, 108, 255, 0.22), transparent 28rem),
+        radial-gradient(circle at 70% 82%, rgba(72, 227, 155, 0.12), transparent 28rem),
+        linear-gradient(135deg, #02040b 0%, var(--bg) 42%, #08182b 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent 80%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(20px);
+      background: rgba(4, 8, 18, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      box-shadow: 0 0 30px rgba(54, 214, 255, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    section {
+      padding: 78px 0;
+      position: relative;
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      align-items: center;
+      padding: 64px 0 88px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .badge {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(54, 214, 255, 0.34);
+      background: linear-gradient(90deg, rgba(54, 214, 255, 0.14), rgba(157, 108, 255, 0.14));
+      color: #dff8ff;
+      box-shadow: 0 0 34px rgba(54, 214, 255, 0.14);
+      animation: pulseBadge 2.8s ease-in-out infinite;
+    }
+
+    .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 99px;
+      background: var(--green);
+      box-shadow: 0 0 16px var(--green);
+    }
+
+    h1 {
+      margin: 24px 0 10px;
+      font-size: clamp(54px, 7vw, 98px);
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff, #9eeeff 42%, #b59cff 74%, #7df0b8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 0 0 18px;
+      font-size: clamp(25px, 3vw, 42px);
+      line-height: 1.12;
+      color: #e9f6ff;
+      font-weight: 760;
+    }
+
+    .lead {
+      max-width: 680px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.055);
+      color: #e7f3ff;
+      border-radius: 999px;
+      padding: 11px 14px;
+      font-size: 14px;
+      backdrop-filter: blur(16px);
+    }
+
+    .callout {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 640px;
+      padding: 18px;
+      border: 1px solid rgba(255, 177, 74, 0.34);
+      border-radius: var(--radius);
+      background: linear-gradient(90deg, rgba(255, 177, 74, 0.14), rgba(255, 94, 120, 0.08));
+      box-shadow: var(--shadow);
+      font-size: 18px;
+      font-weight: 760;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+        rgba(7, 18, 34, 0.72);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(22px);
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: conic-gradient(from 120deg, rgba(54, 214, 255, 0.6), transparent, rgba(157, 108, 255, 0.5), transparent, rgba(72, 227, 155, 0.4), rgba(54, 214, 255, 0.6));
+      opacity: 0.42;
+      filter: blur(34px);
+      animation: rotateGlow 8s linear infinite;
+    }
+
+    .dashboard {
+      position: absolute;
+      inset: 22px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 18px;
+      z-index: 1;
+    }
+
+    .dash-top,
+    .dash-bottom {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(3, 10, 22, 0.72);
+      padding: 18px;
+    }
+
+    .dash-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .score {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .score-card {
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .score-card strong {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 4px;
+    }
+
+    .score-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .notice-meter {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(3, 10, 22, 0.78);
+      padding: 22px;
+      display: grid;
+      align-content: center;
+      gap: 18px;
+    }
+
+    .meter-row {
+      display: grid;
+      grid-template-columns: 82px 1fr 70px;
+      gap: 14px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .bar {
+      height: 15px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      transform-origin: left;
+      animation: growBar 1.2s ease forwards;
+    }
+
+    .high span {
+      width: 94%;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+    }
+
+    .mid span {
+      width: 58%;
+      background: linear-gradient(90deg, var(--orange), var(--cyan));
+    }
+
+    .low span {
+      width: 28%;
+      background: linear-gradient(90deg, var(--red), var(--orange));
+    }
+
+    .dash-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .days {
+      font-size: 54px;
+      line-height: 1;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .days-label {
+      color: var(--muted);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-weight: 780;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+
+    h2 {
+      margin: 8px 0 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 440px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .problem-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .glass-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+      padding: 20px;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(54, 214, 255, 0.45);
+      background: var(--card-strong);
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: rgba(54, 214, 255, 0.12);
+      border: 1px solid rgba(54, 214, 255, 0.24);
+      font-size: 23px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.22;
+    }
+
+    .glass-card p,
+    .timeline-card p,
+    .mini p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.56;
+    }
+
+    .comparison {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .interest-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+    }
+
+    .interest-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 5px;
+      background: var(--accent);
+    }
+
+    .interest-label {
+      color: var(--muted);
+      margin: 10px 0 15px;
+    }
+
+    .interest-value {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--accent);
+    }
+
+    .roadmap {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .big-number {
+      font-size: clamp(86px, 11vw, 150px);
+      font-weight: 950;
+      line-height: 0.82;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+      background: linear-gradient(180deg, #fff, rgba(54, 214, 255, 0.18));
+      -webkit-background-clip: text;
+    }
+
+    .script-box {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(72, 227, 155, 0.32);
+      background: rgba(72, 227, 155, 0.09);
+      color: #dfffee;
+      line-height: 1.58;
+      font-weight: 650;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      left: 23px;
+      width: 2px;
+      background: linear-gradient(var(--cyan), var(--purple), var(--green));
+      opacity: 0.6;
+    }
+
+    .timeline-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      padding: 18px 18px 18px 0;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid var(--line);
+    }
+
+    .timeline-dot {
+      position: relative;
+      z-index: 1;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      font-weight: 900;
+      box-shadow: 0 0 24px rgba(78, 140, 255, 0.28);
+    }
+
+    .options {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .option-card {
+      min-height: 270px;
+    }
+
+    .tag {
+      width: fit-content;
+      padding: 8px 10px;
+      border-radius: 999px;
+      color: var(--tag);
+      background: color-mix(in srgb, var(--tag) 14%, transparent);
+      border: 1px solid color-mix(in srgb, var(--tag) 34%, transparent);
+      font-size: 13px;
+      font-weight: 780;
+      margin-bottom: 16px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .day-card {
+      text-align: center;
+      padding: 22px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035));
+    }
+
+    .day-card strong {
+      display: block;
+      font-size: 42px;
+      color: var(--cyan);
+      line-height: 1;
+    }
+
+    .day-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .check {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      min-height: 56px;
+      padding: 13px;
+      border-radius: var(--radius);
+      background: rgba(72, 227, 155, 0.075);
+      border: 1px solid rgba(72, 227, 155, 0.18);
+      color: #eafff5;
+      font-weight: 650;
+    }
+
+    .target-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .mini {
+      padding: 18px;
+      text-align: center;
+      min-height: 150px;
+    }
+
+    .mini strong {
+      display: block;
+      margin: 10px 0 6px;
+    }
+
+    .profile-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .mistakes {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .danger {
+      border-color: rgba(255, 94, 120, 0.28);
+      background: linear-gradient(145deg, rgba(255, 94, 120, 0.14), rgba(255, 255, 255, 0.04));
+    }
+
+    .success {
+      border-color: rgba(72, 227, 155, 0.28);
+      background: linear-gradient(145deg, rgba(72, 227, 155, 0.12), rgba(255, 255, 255, 0.04));
+    }
+
+    .footer-card {
+      text-align: center;
+      padding: 46px 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(54, 214, 255, 0.28);
+      background:
+        linear-gradient(135deg, rgba(54, 214, 255, 0.12), rgba(157, 108, 255, 0.12), rgba(72, 227, 155, 0.08)),
+        rgba(8, 18, 34, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .footer-card h2 {
+      margin-bottom: 14px;
+    }
+
+    .footer-card p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.65;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulseBadge {
+
+      0%,
+      100% {
+        transform: translateY(0);
+        box-shadow: 0 0 34px rgba(54, 214, 255, 0.14);
+      }
+
+      50% {
+        transform: translateY(-3px);
+        box-shadow: 0 0 44px rgba(157, 108, 255, 0.22);
+      }
+    }
+
+    @keyframes rotateGlow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes growBar {
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    @media (max-width: 1040px) {
+
+      .hero-grid,
+      .roadmap,
+      .mistakes {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-grid,
+      .options,
+      .profile-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .target-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-visual {
+        min-height: 510px;
+      }
+
+      .score,
+      .comparison,
+      .countdown,
+      .checklist,
+      .problem-grid,
+      .options,
+      .target-grid,
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-copy {
+        margin-top: 14px;
+      }
+
+      .meter-row {
+        grid-template-columns: 70px 1fr 56px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="90 days notice period guide">
+        <span class="brand-mark">90</span>
+        <span>Notice Period Playbook</span>
+      </a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#options">Options</a>
+        <a href="#checklist">Checklist</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero page">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="badge"><span class="badge-dot"></span> Developer Career Guide</div>
+          <h1><span class="gradient-text">90 Days</span><br>Notice Period?</h1>
+          <p class="subtitle">Still You Can Plan Your Job Switch Smartly</p>
+          <p class="lead">Most recruiters prefer immediate joiners or 30 days notice period candidates. But if your
+            notice period is 3 months, you still have practical options.</p>
+          <div class="chips">
+            <span class="chip">Immediate Joiner Problem</span>
+            <span class="chip">3 Months Notice Period</span>
+            <span class="chip">Job Switch Strategy</span>
+          </div>
+          <div class="callout"><span>Important:</span> 90 days notice period is difficult, but not impossible.</div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="dashboard">
+            <div class="dash-top">
+              <div class="dash-title">
+                <span>Recruiter Interest Snapshot</span>
+                <span>Live job-switch reality</span>
+              </div>
+              <div class="score">
+                <div class="score-card"><strong style="color: var(--green);">High</strong><span>0-30 days</span></div>
+                <div class="score-card"><strong style="color: var(--orange);">Medium</strong><span>60 days</span></div>
+                <div class="score-card"><strong style="color: var(--red);">Low</strong><span>90 days</span></div>
+              </div>
+            </div>
+            <div class="notice-meter">
+              <div class="meter-row"><span>Immediate</span>
+                <div class="bar high"><span></span></div><strong>94%</strong>
+              </div>
+              <div class="meter-row"><span>15 Days</span>
+                <div class="bar high"><span></span></div><strong>90%</strong>
+              </div>
+              <div class="meter-row"><span>30 Days</span>
+                <div class="bar high"><span></span></div><strong>82%</strong>
+              </div>
+              <div class="meter-row"><span>60 Days</span>
+                <div class="bar mid"><span></span></div><strong>58%</strong>
+              </div>
+              <div class="meter-row"><span>90 Days</span>
+                <div class="bar low"><span></span></div><strong>28%</strong>
+              </div>
+            </div>
+            <div class="dash-bottom">
+              <div>
+                <div class="days">90</div>
+                <div class="days-label">official days to manage</div>
+              </div>
+              <div class="chip">Strategy beats panic</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="page">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">The Real Problem</div>
+          <h2>Why 90 Days Notice Period Becomes a Problem?</h2>
+        </div>
+        <p class="section-copy">Recruiters often need fast closures. A long notice period can filter you before your
+          technical skills are even checked.</p>
+      </div>
+
+      <div class="grid problem-grid">
+        <article class="glass-card reveal">
+          <div class="icon">⚡</div>
+          <h3>Urgent joiners win calls</h3>
+          <p>Many teams are hiring for immediate project needs, so 0 to 30 days candidates get faster recruiter
+            attention.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🔎</div>
+          <h3>Profiles get filtered</h3>
+          <p>Naukri and LinkedIn searches often prioritize shorter notice periods, reducing visibility for 90-day
+            candidates.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🚪</div>
+          <h3>HR may reject early</h3>
+          <p>The conversation can close before resume quality, project depth, or coding ability gets evaluated.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🏢</div>
+          <h3>Only some companies wait</h3>
+          <p>Planned hiring teams, large firms, and referral openings are more likely to accept longer timelines.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">💎</div>
+          <h3>Strong profiles still matter</h3>
+          <p>Rare skills, senior experience, and strong interview performance can make companies wait.</p>
+        </article>
+      </div>
+
+      <div class="comparison">
+        <article class="glass-card interest-card reveal" style="--accent: var(--green);">
+          <h3>Immediate / 15 / 30 Days</h3>
+          <p class="interest-label">Recruiter interest</p>
+          <div class="interest-value">High</div>
+        </article>
+        <article class="glass-card interest-card reveal" style="--accent: var(--orange);">
+          <h3>60 Days</h3>
+          <p class="interest-label">Recruiter interest</p>
+          <div class="interest-value">Medium</div>
+        </article>
+        <article class="glass-card interest-card reveal" style="--accent: var(--red);">
+          <h3>90 Days</h3>
+          <p class="interest-label">Recruiter interest</p>
+          <div class="interest-value">Low, but possible</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="roadmap" class="page">
+      <div class="roadmap">
+        <div class="glass-card reveal">
+          <div class="eyebrow">Smart Framing</div>
+          <div class="big-number">01</div>
+          <h2>Search While Employed, But Be Smart</h2>
+          <p class="section-copy">Do not casually fake 30 days if your official policy says 90 days. Use a realistic,
+            negotiable frame that keeps the discussion open.</p>
+          <div class="script-box">"My official notice period is 90 days, but I am discussing early release or buyout
+            options. Realistically, I can try for 45 to 60 days."</div>
+        </div>
+        <div class="timeline reveal">
+          <article class="timeline-card">
+            <div class="timeline-dot">1</div>
+            <div>
+              <h3>Profile wording</h3>
+              <p>Use "Notice Period: Negotiable" or "90 days, early release can be discussed."</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <div class="timeline-dot">2</div>
+            <div>
+              <h3>Recruiter call</h3>
+              <p>Lead with flexibility, buyout possibility, and realistic 45 to 60 day target.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <div class="timeline-dot">3</div>
+            <div>
+              <h3>Policy check</h3>
+              <p>Before resigning, verify buyout, leave adjustment, and early release rules.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <div class="timeline-dot">4</div>
+            <div>
+              <h3>Offer strategy</h3>
+              <p>If you have EMI, family responsibilities, or no backup money, crack one offer before resigning.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="options" class="page">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Practical Options</div>
+          <h2>Six Ways To Manage The 3 Month Timeline</h2>
+        </div>
+        <p class="section-copy">The right path depends on money pressure, preparation level, market demand, and your
+          current company policy.</p>
+      </div>
+
+      <div class="grid options">
+        <article class="glass-card option-card reveal">
+          <div class="tag" style="--tag: var(--green);">Safest</div>
+          <h3>Get One Offer, Then Resign</h3>
+          <p>Prepare strongly, attend interviews, crack one offer, then start the official notice period. Best for
+            developers with financial responsibilities. if Interview Feedback is strong Company wait for 3 Months also
+          </p>
+        </article>
+        <article class="glass-card option-card reveal">
+          <div class="tag" style="--tag: var(--orange);">Policy Lever</div>
+          <h3>Early Release Or Buyout</h3>
+          <p>Many companies allow salary buyout, leave adjustment, or manager-approved release. Ask properly before
+            assuming full 90 days is compulsory.</p>
+        </article>
+        <article class="glass-card option-card reveal">
+          <div class="tag" style="--tag: var(--red);">Risky</div>
+          <h3>Resign First, Search Aggressively</h3>
+          <p>Powerful only when preparation is strong, savings are ready, and pressure is low. As days reduce, recruiter
+            interest improves. Most are Choose this Option now a days but its really Very Risky</p>
+        </article>
+        <article class="glass-card option-card reveal">
+          <div class="tag" style="--tag: var(--cyan);">Targeted</div>
+          <h3>Apply Where 90 Days Works</h3>
+          <p>Large MNCs, service companies, future project hiring, senior roles, niche skills, and referral openings can
+            wait longer. But keep patience for this</p>
+        </article>
+        <article class="glass-card option-card reveal">
+          <div class="tag" style="--tag: var(--purple);">Profile Power</div>
+          <h3>Become Worth Waiting For</h3>
+          <p>Strong resume, project clarity, communication, fundamentals, SQL, APIs, GitHub, portfolio, and mock
+            interviews increase wait tolerance. Be Full-Stack ,AI Expert add skill which is in demand</p>
+        </article>
+        
+      </div>
+    </section>
+
+
+
+    <section id="checklist" class="page">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Before Resigning</div>
+          <h2>Non-Negotiable Checklist</h2>
+        </div>
+        <p class="section-copy">Do not resign casually. Make sure the basics are ready before taking the risky path.</p>
+      </div>
+      <div class="checklist">
+        <div class="check reveal">✓ Resume ATS ready</div>
+        <div class="check reveal">✓ LinkedIn / Naukri updated</div>
+        <div class="check reveal">✓ Core topics revised</div>
+        <div class="check reveal">✓ Mock interviews done</div>
+        <div class="check reveal">✓ 2-3 months savings</div>
+        <div class="check reveal">✓ No major financial pressure</div>
+        <div class="check reveal">✓ Scenario Based Questions</div>
+        <div class="check reveal">✓ Market demand checked</div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Where To Apply</div>
+          <h2>Companies More Likely To Accept 60-90 Days</h2>
+        </div>
+        <p class="section-copy">Targeting improves results. Do not spend all your energy only on immediate-joining
+          roles.</p>
+      </div>
+      <div class="grid target-grid">
+        <article class="glass-card mini reveal">
+          <div class="icon">🏛️</div><strong>Large MNCs</strong>
+          <p>Planned hiring cycles</p>
+        </article>
+        <article class="glass-card mini reveal">
+          <div class="icon">🧩</div><strong>Service Firms</strong>
+          <p>TCS, Infosys Just Few who has Flexible pipelines</p>
+        </article>
+        <article class="glass-card mini reveal">
+          <div class="icon">📅</div><strong>Future Projects</strong>
+          <p>Roles starting later</p>
+        </article>
+        <article class="glass-card mini reveal">
+          <div class="icon">🎯</div><strong>Niche Skills</strong>
+          <p>Hard-to-find talent, Full-Stack- AI generalist </p>
+        </article>
+       
+        <article class="glass-card mini reveal">
+          <div class="icon">🤝</div><strong>Referrals</strong>
+          <p>Warm introductions</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Profile Upgrade</div>
+          <h2>Become A Candidate Companies Can Wait For</h2>
+        </div>
+        <p class="section-copy">If the profile is average, 90 days hurts more. If the profile is strong, companies
+          become flexible.</p>
+      </div>
+      <div class="grid profile-grid">
+        <article class="glass-card reveal">
+          <div class="icon">📄</div>
+          <h3>Strong Resume</h3>
+          <p>Good ATS Score, Clear impact, technologies, project outcomes, and measurable contributions.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">💬</div>
+          <h3>Project Explanation</h3>
+          <p>Speak confidently about architecture, decisions, tradeoffs, and production issues.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🧱</div>
+          <h3>Core Fundamentals</h3>
+          <p>Angular, React, .NET, Java, SQL, APIs, system design basics, and debugging depth.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🤖</div>
+          <h3>Visible Proof</h3>
+          <p>Good GitHub, portfolio, LinkedIn activity, referrals, and interview practice.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🧑‍💻</div>
+          <h3>Add AI in Your Bucket</h3>
+          <p>AI Agents, AI tools for Use Case, Be Good with prompt, GEN AI Expert.</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🌐</div>
+          <h3>Be Full-Stack Dev</h3>
+          <p>Become Full-Stack Developer, market has shown Full-Stack will have 50% more interview calls</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🔄</div>
+          <h3>Open to Adapt New Tech</h3>
+          <p>If you are Angular Dev, Be open for ReactJs, Next Js, Nodejs, Ionic, Native</p>
+        </article>
+        <article class="glass-card reveal">
+          <div class="icon">🧩</div>
+          <h3>Logic & Problem Solving</h3>
+          <p>Interviewer checks your Logical and Problem solving skill by asking scenario based questions</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Do This, Not That</div>
+          <h2>Smart Actions vs Common Mistakes</h2>
+        </div>
+      </div>
+      <div class="grid mistakes">
+        <article class="glass-card danger reveal">
+          <div class="icon">⚠️</div>
+          <h3>Common Mistakes</h3>
+          <p>Lying outright about notice period, resigning without preparation, ignoring buyout policy, applying
+            randomly, and saying only "90 days" in the first recruiter call.</p>
+        </article>
+        <article class="glass-card success reveal">
+          <div class="icon">✅</div>
+          <h3>Smart Actions</h3>
+          <p>Use negotiable framing, ask for early release, target companies that can wait, use referrals, prepare
+            before resigning, and discuss buyout reimbursement.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="footer-card reveal">
+        <div class="eyebrow">Final Message</div>
+        <h2>90 Days Is A Constraint, Not A Career Stopper</h2>
+        <p>Plan your profile, timing, negotiation, savings, and company targeting. The goal is simple: keep recruiter
+          conversations open long enough for your skills to speak.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    reveals.forEach((el, index) => {
+      el.style.transitionDelay = `${Math.min(index % 6, 5) * 70}ms`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+
+</html>

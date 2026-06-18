@@ -1,0 +1,1332 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>React JS Tutorial Roadmap</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --ink: #111827;
+      --muted: #64748b;
+      --line: #dbe3ef;
+      --card: rgba(255, 255, 255, 0.78);
+      --card-solid: #ffffff;
+      --dark: #07111f;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --violet: #7c3aed;
+      --green: #10b981;
+      --done-bg: #dcfce7;
+      --done-border: #86efac;
+      --done-ink: #166534;
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --radius: 8px;
+      --shadow: 0 22px 70px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(37, 99, 235, 0.18), transparent 30rem),
+        radial-gradient(circle at 86% 18%, rgba(124, 58, 237, 0.14), transparent 28rem),
+        radial-gradient(circle at 70% 90%, rgba(16, 185, 129, 0.14), transparent 30rem),
+        linear-gradient(135deg, #f8fbff 0%, #eef4ff 48%, #f7f9ff 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 78%);
+      z-index: -1;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1760px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      display: grid;
+      grid-template-columns: 1fr 0.72fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(7, 17, 31, 0.96), rgba(16, 30, 55, 0.94)),
+        var(--dark);
+      box-shadow: var(--shadow);
+      color: white;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      top: -220px;
+      background: conic-gradient(from 160deg, var(--cyan), var(--violet), var(--green), var(--blue), var(--cyan));
+      filter: blur(18px);
+      opacity: 0.42;
+      animation: rotateGlow 10s linear infinite;
+    }
+
+    .hero-content,
+    .hero-panel {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(125, 211, 252, 0.34);
+      background: rgba(255, 255, 255, 0.08);
+      color: #dbf7ff;
+      font-weight: 760;
+    }
+
+    .badge-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      margin: 20px 0 12px;
+      font-size: clamp(46px, 6.5vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .shine {
+      background: linear-gradient(90deg, #ffffff, #a7f3ff 38%, #c4b5fd 72%, #bbf7d0);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0;
+      color: #bdd0e7;
+      font-size: 19px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-chip {
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      color: #eef7ff;
+      font-weight: 680;
+      font-size: 14px;
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-panel {
+      min-height: 250px;
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .stat {
+      display: grid;
+      grid-template-columns: 54px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .stat-mark {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      font-weight: 900;
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .stat span {
+      color: #b9cbe2;
+      font-size: 14px;
+    }
+
+    .stat small {
+      color: #99f6e4;
+      font-weight: 840;
+    }
+
+    .workspace {
+      margin-top: 24px;
+      display: grid;
+      gap: 18px;
+      transition: grid-template-columns 320ms ease;
+    }
+
+    .workspace.overview {
+      grid-template-columns: 1fr;
+    }
+
+    .workspace.focus {
+      grid-template-columns: 360px minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .topic-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      transition: all 320ms ease;
+    }
+
+    .focus .topic-board {
+      position: sticky;
+      top: 18px;
+      grid-template-columns: 1fr;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .topic-card {
+      min-height: 204px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 16px 50px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(18px);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+      animation: enterUp 620ms ease both;
+      animation-delay: calc(var(--i) * 55ms);
+    }
+
+    .focus .topic-card {
+      min-height: 112px;
+      padding: 16px;
+    }
+    .topic-card.done {
+      border-color: var(--done-border);
+      background: linear-gradient(135deg, var(--done-bg), #f0fdf4);
+      box-shadow: 0 18px 54px rgba(22, 101, 52, 0.14);
+    }
+
+    .topic-card.done .topic-icon {
+      background: #bbf7d0;
+      color: var(--done-ink);
+      border-color: var(--done-border);
+    }
+
+    .topic-card.done h2 {
+      color: var(--done-ink);
+    }
+
+    .topic-card:hover,
+    .topic-card.active {
+      transform: translateY(-6px);
+      border-color: color-mix(in srgb, var(--accent) 52%, white);
+      background: var(--card-solid);
+      box-shadow: 0 22px 58px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+    .topic-card.done:hover,
+    .topic-card.done.active {
+      border-color: var(--done-border);
+      background: linear-gradient(135deg, var(--done-bg), #f0fdf4);
+      box-shadow: 0 22px 58px rgba(22, 101, 52, 0.18);
+    }
+
+    .focus .topic-card:hover,
+    .focus .topic-card.active {
+      transform: translateX(4px);
+    }
+
+    .topic-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topic-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--accent) 14%, white);
+      color: color-mix(in srgb, var(--accent) 86%, black);
+      border: 1px solid color-mix(in srgb, var(--accent) 28%, white);
+      font-weight: 950;
+    }
+
+    .topic-card h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .topic-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .topic-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 740;
+    }
+
+    .topic-count {
+      color: color-mix(in srgb, var(--accent) 80%, black);
+    }
+    .topic-status {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4338ca;
+      font-size: 12px;
+      font-weight: 860;
+      white-space: nowrap;
+    }
+
+    .topic-status.done {
+      background: #bbf7d0;
+      color: var(--done-ink);
+    }
+
+    .details {
+      display: none;
+      min-height: 620px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      animation: detailIn 420ms ease both;
+    }
+
+    .focus .details {
+      display: block;
+    }
+
+    .details-head {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      color: white;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.24), transparent 20rem),
+        linear-gradient(135deg, color-mix(in srgb, var(--detail-accent) 86%, #111827), #0f172a);
+    }
+
+
+    .lesson-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.12);
+      font-weight: 780;
+      font-size: 14px;
+    }
+
+    .details-head h2 {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 18px 0 10px;
+      font-size: clamp(34px, 4.5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .react-mark {
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: var(--radius);
+      background: rgba(97, 218, 251, 0.18);
+      color: #cffafe;
+      font-weight: 950;
+      font-size: 28px;
+    }
+
+    .topic-logo {
+      position: absolute;
+      right: 34px;
+      bottom: 28px;
+      z-index: 1;
+      width: 150px;
+      height: auto;
+      max-height: 162px;
+      object-fit: contain;
+
+    }
+
+    .details-head p {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0;
+      color: #d7e7f8;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .details-body {
+      padding: 30px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .subtabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .subtab {
+      padding: 10px 13px;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--muted);
+      font-weight: 760;
+      transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .subtab:hover,
+    .subtab.active {
+      color: var(--ink);
+      border-color: color-mix(in srgb, var(--detail-accent) 50%, white);
+      background: color-mix(in srgb, var(--detail-accent) 10%, white);
+      transform: translateY(-2px);
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .lesson-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: 0 14px 44px rgba(15, 23, 42, 0.07);
+    }
+
+    .lesson-card h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      letter-spacing: 0;
+    }
+
+    .lesson-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 16px;
+    }
+
+    .points {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .code-blocks {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .code-block {
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid #172033;
+      background: #020617;
+      box-shadow: 0 18px 42px rgba(2, 6, 23, 0.22);
+    }
+
+    .code-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 13px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      color: #cbd5e1;
+      background: #0f172a;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    pre {
+      margin: 0;
+      padding: 15px;
+      overflow-x: auto;
+      color: #d1fae5;
+      font: 760 16px/1.65 "Cascadia Code", "Fira Code", Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: normal;
+      overflow-wrap: anywhere;
+    }
+
+
+    .code-block.theory-note {
+      border-color: #cbd5e1;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+    }
+
+    .code-block.theory-note .code-title {
+      color: #0f172a;
+      background: #eef6ff;
+      border-bottom-color: #dbeafe;
+      font-size: 15px;
+    }
+
+    .code-block.theory-note pre {
+      color: #1f2937;
+      background: #ffffff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 17px;
+      line-height: 1.78;
+      font-weight: 560;
+      letter-spacing: 0;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+    .url-line {
+      color: #93c5fd;
+    }
+
+    .point {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid color-mix(in srgb, var(--detail-accent) 18%, var(--line));
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--detail-accent) 7%, white);
+      color: #243041;
+      font-weight: 650;
+    }
+
+    .point span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--detail-accent) 14%, white);
+      color: color-mix(in srgb, var(--detail-accent) 86%, black);
+      font-weight: 940;
+      font-size: 13px;
+    }
+
+    .video-flow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 15px 15px 15px 50px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f8fbff;
+      color: #253244;
+      font-weight: 720;
+    }
+
+    .flow-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 13px;
+      top: 13px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--detail-accent);
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .empty-state {
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.56);
+      text-align: center;
+      padding: 32px;
+    }
+
+    .empty-state strong {
+      display: block;
+      color: var(--ink);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .reset-row {
+      display: none;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+
+    .focus+.reset-row {
+      display: flex;
+    }
+
+    .reset-btn {
+      cursor: pointer;
+      padding: 11px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
+      font-weight: 780;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    @keyframes rotateGlow {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes enterUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes detailIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1120px) {
+
+      .hero,
+      .workspace.focus,
+      .lesson-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .focus .topic-board {
+        position: static;
+        grid-template-columns: repeat(2, 1fr);
+        max-height: none;
+      }
+
+      .topic-board {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 24px, 1760px);
+        padding-top: 12px;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+
+      .topic-board,
+      .focus .topic-board {
+        grid-template-columns: 1fr;
+      }
+
+      .details-head,
+      .details-body {
+        padding: 20px;
+      }
+
+      .react-mark {
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: var(--radius);
+      background: rgba(97, 218, 251, 0.18);
+      color: #cffafe;
+      font-weight: 950;
+      font-size: 28px;
+    }
+
+    .topic-logo {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 92px;
+        max-height: 96px;
+        margin-top: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge"><span class="badge-dot"></span> React Tutorial Planner</div>
+        <h1><span class="shine">React JS</span><br>Tutorial Roadmap</h1>
+
+        <div class="hero-actions">
+          <span class="hero-chip">React JS Series</span>
+          <span class="hero-chip">Advanced React</span>
+          <span class="hero-chip">20-Day Learning Flow</span>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Series summary">
+        <div class="stat">
+          <div class="stat-mark">B</div>
+          <div><strong>Basic Track</strong><span>Setup, JSX, components, state, forms, APIs</span></div>
+          <small>Start here</small>
+        </div>
+        <div class="stat">
+          <div class="stat-mark">A</div>
+          <div><strong>Advanced Track</strong><span>Router, Query, Context, performance, testing</span></div>
+          <small>Next</small>
+        </div>
+        <div class="stat">
+          <div class="stat-mark">R</div>
+          <div><strong>Roadmap View</strong><span>Click any day to see what will be covered inside it</span></div>
+          <small>Explore</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace overview" aria-label="React JS tutorial topic workspace">
+      <div class="topic-board" id="topicBoard"></div>
+      <article class="details" id="detailsPanel" aria-live="polite">
+        <div class="empty-state">
+          <div>
+            <strong>Select a topic</strong>
+            <span>All tutorial days are visible first. Click one day to open the detailed teaching plan.</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="reset-row">
+      <button class="reset-btn" id="resetBtn" type="button">Show Full Roadmap</button>
+    </div>
+  </main>
+
+  <script>
+    const topics = [
+      {
+        id: "day-1",
+        done: false,
+        title: "Day 1: React Mindset & Setup",
+        series: "React JS Series",
+        accent: "#2563eb",
+        icon: "01",
+        summary: "React mindset, setup with Vite, and React + TypeScript project structure.",
+        intro: "Start by explaining how React thinks in components, state, and UI updates before writing feature code.",
+        subtabs: [
+          {
+            title: "Theory",
+            description: "ReactJS Learning Notes - Day 1: React Mindset & Setup. Use this tab as your readable theory script before showing commands and folder structure.",
+            points: [
+              "Project command: npm create vite@latest my-first-app",
+              "Run command: npm run dev",
+              "Project name: my-first-app",
+              "Project type: React + TypeScript + Vite"
+            ],
+            snippets: [
+              {
+                label: "1. Big Picture: How This React App Runs",
+                code: "When we open the app in the browser, the flow is:\n\n1. The browser first loads index.html.\n2. index.html has one empty div: <div id=\"root\"></div>.\n3. index.html loads /src/main.tsx as a JavaScript module.\n4. main.tsx finds the root div and tells React to render App inside it.\n5. App.tsx contains the main visible UI of the page.\n6. CSS files control how the page looks.\n\nSimple flow:\nindex.html -> src/main.tsx -> src/App.tsx -> CSS/assets"
+              },
+              {
+                label: "2. Root Project Files",
+                code: "package.json\nPurpose: Describes the project, commands, and dependencies.\nImportant parts: scripts, dependencies, devDependencies.\n\npackage-lock.json\nPurpose: Records exact installed package versions. Normally we do not edit this manually.\n\nnode_modules/\nPurpose: Contains installed npm packages. Do not edit it. If deleted, recreate with npm install.\n\n.gitignore\nPurpose: Tells Git which files/folders should not be tracked, like node_modules and dist.\n\nREADME.md\nPurpose: Project documentation file."
+              },
+              {
+                label: "3. Browser Entry: index.html",
+                code: "index.html is the main HTML file loaded by the browser.\n\nImportant lines:\n<div id=\"root\"></div>\nThis is the empty container where React places the app.\n\n<script type=\"module\" src=\"/src/main.tsx\"><\/script>\nThis loads the React entry file.\n\nBeginner explanation:\nIn traditional websites, we write most of the page directly in HTML.\nIn React apps, index.html is usually very small, and React creates most UI using components."
+              },
+              {
+                label: "4. Vite Explanation",
+                code: "Vite is the tool that runs and builds your React project.\n\nFor Angular developers:\nThink of Vite as the build/dev-server tool, similar in purpose to the tooling Angular uses behind ng serve/build.\n\nVite helps us:\n- start the development server\n- refresh changes quickly\n- understand React files\n- create the optimized production build\n\nvite.config.ts\nPurpose: Vite configuration file."
+              },
+              {
+                label: "5. TypeScript and Code Quality Config",
+                code: "eslint.config.js\nPurpose: Configures ESLint, a tool that checks code quality and catches common mistakes.\nIt checks TypeScript and TSX files and includes JavaScript, TypeScript, React Hooks, and Vite React Refresh rules.\n\nESLint beginner explanation:\nESLint is like an automatic code reviewer. It helps us write cleaner and safer code.\n\ntsconfig.json\nPurpose: Main TypeScript configuration file.\nIt points to:\n- tsconfig.app.json for app source files\n- tsconfig.node.json for Node/Vite config files\n\ntsconfig.app.json\nConfigures TypeScript for React application code inside src.\n\ntsconfig.node.json\nConfigures TypeScript for files that run in Node.js, mainly vite.config.ts."
+              }
+            ]
+          },
+          {
+            title: "React Mindset",
+            description: "Explain React as a UI library where screens are composed from small reusable components.",
+            points: ["Component-driven UI", "State changes update the view", "Props pass data down", "Unidirectional data flow"]
+          },
+          {
+            title: "Vite Setup",
+            description: "Create a fast React + TypeScript project using Vite.",
+            points: ["Install Node.js", "Create Vite app", "Choose React + TypeScript", "Run dev server"],
+            snippets: [
+              { label: "Create Project", code: "npm create vite@latest react-tutorial -- --template react-ts\ncd react-tutorial\nnpm install\nnpm run dev" }
+            ]
+          },
+          {
+            title: "Project Structure",
+            description: "Walk through src, main.tsx, App.tsx, components, assets, and styles.",
+            points: ["main.tsx entry", "App.tsx root component", "components folder", "TypeScript file extensions"]
+          }
+        ],
+        flow: ["Explain React mindset", "Create Vite project", "Run app", "Tour folder structure"]
+      },
+      {
+        id: "day-2",
+        done: false,
+        title: "Day 2: JSX, Components & Events",
+        series: "React JS Series",
+        accent: "#0ea5e9",
+        icon: "02",
+        summary: "JSX, components, styling, and event handling.",
+        intro: "Show how React renders UI with JSX and how events connect the UI to component logic.",
+        subtabs: [
+          { title: "JSX Basics", description: "Teach JSX expressions, attributes, className, and returning one parent element.", points: ["JS inside markup", "className", "Expression braces", "Fragment wrapper"] },
+          { title: "Components", description: "Create function components and compose them inside App.", points: ["Function components", "Export/import", "Reusable UI", "Component naming"] },
+          { title: "Events & Styling", description: "Handle clicks and apply CSS modules, global CSS, or inline styles.", points: ["onClick", "onChange", "CSS file", "Inline style object"], snippets: [{ label: "Event Example", code: "function Button() {\n  function handleClick() {\n    console.log('Clicked');\n  }\n\n  return <button onClick={handleClick}>Save</button>;\n}" }] }
+        ],
+        flow: ["Explain JSX", "Create components", "Add styles", "Handle a click event"]
+      },
+      {
+        id: "day-3",
+        done: false,
+        title: "Day 3: Props & Children",
+        series: "React JS Series",
+        accent: "#7c3aed",
+        icon: "03",
+        summary: "Props, children, and component communication.",
+        intro: "Props are the foundation for making reusable components.",
+        subtabs: [
+          { title: "Props", description: "Pass values from parent to child components with TypeScript types.", points: ["Props object", "Required props", "Optional props", "Destructuring"], snippets: [{ label: "Typed Props", code: "type UserCardProps = {\n  name: string;\n  role?: string;\n};\n\nfunction UserCard({ name, role }: UserCardProps) {\n  return <h2>{name} - {role}</h2>;\n}" }] },
+          { title: "Children", description: "Use children for flexible wrapper components.", points: ["children prop", "Card layout", "Reusable shell", "Composition"] },
+          { title: "Communication", description: "Pass callback functions from parent to child for events.", points: ["Parent owns state", "Child receives callback", "Child triggers event", "Parent updates data"] }
+        ],
+        flow: ["Build child component", "Pass props", "Use children", "Pass callback from parent"]
+      },
+      {
+        id: "day-4",
+        done: false,
+        title: "Day 4: useState Deeply",
+        series: "React JS Series",
+        accent: "#10b981",
+        icon: "04",
+        summary: "Understand useState for strings, numbers, booleans, objects, and arrays.",
+        intro: "This is the core React state episode and should include many tiny live examples.",
+        subtabs: [
+          { title: "State Basics", description: "Create and update simple local state.", points: ["useState import", "state getter", "setter function", "render update"], snippets: [{ label: "Counter", code: "const [count, setCount] = useState(0);\n\n<button onClick={() => setCount(count + 1)}>\n  Count: {count}\n</button>" }] },
+          { title: "Object State", description: "Update object state immutably with spread syntax.", points: ["Never mutate", "Copy previous object", "Update one field", "Functional updates"] },
+          { title: "Array State", description: "Add, update, filter, and map array items.", points: ["Add item", "Remove item", "Update item", "Track by id"] }
+        ],
+        flow: ["Counter", "Toggle", "Object form state", "Array todo state"]
+      },
+      {
+        id: "day-5",
+        done: false,
+        title: "Day 5: Rendering Patterns",
+        series: "React JS Series",
+        accent: "#f59e0b",
+        icon: "05",
+        summary: "Conditional rendering, list rendering, keys, and fragments.",
+        intro: "Teach how React decides what to show based on data.",
+        subtabs: [
+          { title: "Conditional Rendering", description: "Show if, ternary, &&, and early return patterns.", points: ["if return", "ternary", "&& rendering", "loading/empty states"] },
+          { title: "Lists & Keys", description: "Render arrays with map and explain stable keys.", points: ["map()", "key prop", "why index can be risky", "empty list message"], snippets: [{ label: "List Rendering", code: "{users.map((user) => (\n  <UserCard key={user.id} user={user} />\n))}" }] },
+          { title: "Fragments", description: "Return grouped JSX without extra DOM nodes.", points: ["<>...</>", "No extra div", "Grouped return", "List fragments"] }
+        ],
+        flow: ["Show condition", "Render list", "Explain key", "Use fragment"]
+      },
+      {
+        id: "day-6",
+        done: false,
+        title: "Day 6: useEffect Lifecycle",
+        series: "React JS Series",
+        accent: "#06b6d4",
+        icon: "06",
+        summary: "Understand useEffect lifecycle and dependency arrays.",
+        intro: "Effects are where beginners often get confused, so keep this practical and visual.",
+        subtabs: [
+          { title: "Effect Basics", description: "Run side effects after render.", points: ["useEffect import", "Runs after render", "Dependency array", "Avoid unnecessary effects"], snippets: [{ label: "Effect", code: "useEffect(() => {\n  document.title = `Count: ${count}`;\n}, [count]);" }] },
+          { title: "Cleanup", description: "Clean subscriptions, timers, and event listeners.", points: ["Return cleanup function", "Timers", "Listeners", "Unmount behavior"] },
+          { title: "Common Mistakes", description: "Explain infinite loops and missing dependencies.", points: ["State update loop", "Missing dependency", "Object dependencies", "Fetch inside effect"] }
+        ],
+        flow: ["Run simple effect", "Add dependency", "Add cleanup", "Debug common mistakes"]
+      },
+      {
+        id: "day-7",
+        done: false,
+        title: "Day 7: Forms Basics",
+        series: "React JS Series",
+        accent: "#ec4899",
+        icon: "07",
+        summary: "Controlled and uncontrolled form components.",
+        intro: "Forms connect user input with React state.",
+        subtabs: [
+          { title: "Controlled Components", description: "Input value is controlled by React state.", points: ["value prop", "onChange", "state update", "submit handler"], snippets: [{ label: "Controlled Input", code: "const [name, setName] = useState('');\n\n<input value={name} onChange={(e) => setName(e.target.value)} />" }] },
+          { title: "Uncontrolled Components", description: "Use refs when the DOM owns the current value.", points: ["useRef", "Read value on submit", "Simple forms", "When to avoid"] },
+          { title: "Form Submit", description: "Prevent default submit and process values.", points: ["onSubmit", "preventDefault", "Validation basics", "Reset form"] }
+        ],
+        flow: ["Build controlled form", "Submit values", "Show uncontrolled ref example"]
+      },
+      {
+        id: "day-8",
+        done: false,
+        title: "Day 8: React Hook Form",
+        series: "React JS Series",
+        accent: "#8b5cf6",
+        icon: "08",
+        summary: "React Hook Form with validation.",
+        intro: "Move from manual state forms to a scalable form library.",
+        subtabs: [
+          { title: "Setup", description: "Install and configure React Hook Form.", points: ["Install package", "useForm", "register", "handleSubmit"], snippets: [{ label: "Install", code: "npm install react-hook-form" }] },
+          { title: "Validation", description: "Add required, minLength, pattern, and error messages.", points: ["register rules", "formState.errors", "Show error", "Disable submit"] },
+          { title: "Submit Data", description: "Read validated form data with handleSubmit.", points: ["Typed form values", "Submit callback", "Reset", "Default values"] }
+        ],
+        flow: ["Install library", "Register inputs", "Add validation", "Submit data"]
+      },
+      {
+        id: "day-9",
+        done: false,
+        title: "Day 9: Zod Validation",
+        series: "React JS Series",
+        accent: "#9333ea",
+        icon: "09",
+        summary: "Zod schema validation with React Hook Form.",
+        intro: "Schema validation makes form rules reusable and type-safe.",
+        subtabs: [
+          { title: "Zod Setup", description: "Install Zod and the Hook Form resolver.", points: ["Install zod", "Install resolvers", "Create schema", "Infer TypeScript type"], snippets: [{ label: "Install", code: "npm install zod @hookform/resolvers" }] },
+          { title: "Schema Rules", description: "Define required fields, email, min length, and custom messages.", points: ["z.object", "z.string", "email", "min"] },
+          { title: "Connect Resolver", description: "Use zodResolver inside useForm.", points: ["resolver option", "typed form data", "central validation", "clean component"] }
+        ],
+        flow: ["Create schema", "Infer type", "Connect resolver", "Show errors"]
+      },
+      {
+        id: "day-10",
+        done: false,
+        title: "Day 10: React Router Basics",
+        series: "React JS Series",
+        accent: "#2563eb",
+        icon: "10",
+        summary: "Routes, navigation, and params.",
+        intro: "Routing turns a React UI into a real app with multiple screens.",
+        subtabs: [
+          { title: "Route Setup", description: "Install React Router and configure routes.", points: ["BrowserRouter", "Routes", "Route", "Page components"], snippets: [{ label: "Install", code: "npm install react-router-dom" }] },
+          { title: "Navigation", description: "Use Link and NavLink for navigation.", points: ["Link", "NavLink", "active styles", "Navigate component"] },
+          { title: "Params", description: "Read route params for detail pages.", points: ["Dynamic route", "useParams", "Product detail", "Not found state"] }
+        ],
+        flow: ["Install router", "Create pages", "Add links", "Read params"]
+      },
+      {
+        id: "day-11",
+        done: false,
+        title: "Day 11: Advanced Routing",
+        series: "React JS Series",
+        accent: "#0891b2",
+        icon: "11",
+        summary: "Nested routes, layout routes, and protected routes.",
+        intro: "Teach production-style route composition.",
+        subtabs: [
+          { title: "Nested Routes", description: "Render child routes with Outlet.", points: ["Parent route", "Outlet", "Child pages", "Nested navigation"] },
+          { title: "Layout Routes", description: "Share header/sidebar layouts across pages.", points: ["App layout", "Dashboard layout", "Outlet placement", "Reusable shell"] },
+          { title: "Protected Routes", description: "Restrict pages based on auth state.", points: ["Auth check", "Navigate redirect", "PrivateRoute", "Role-based route"] }
+        ],
+        flow: ["Create layout", "Add nested routes", "Build protected route"]
+      },
+      {
+        id: "day-12",
+        done: false,
+        title: "Day 12: API Integration",
+        series: "React JS Series",
+        accent: "#ef4444",
+        icon: "12",
+        summary: "API integration using Axios or Fetch.",
+        intro: "Connect React to backend data and show it on screen.",
+        subtabs: [
+          { title: "Fetch API", description: "Call a GET endpoint and render response data.", points: ["fetch", "async/await", "JSON response", "state update"] },
+          { title: "Axios", description: "Use Axios for cleaner HTTP calls.", points: ["Install axios", "axios.get", "axios.post", "base URL"], snippets: [{ label: "Install", code: "npm install axios" }] },
+          { title: "Service Layer", description: "Move API calls into reusable service functions.", points: ["api folder", "typed response", "single responsibility", "reuse across components"] }
+        ],
+        flow: ["Call GET API", "Render data", "Add service function", "Compare fetch and axios"]
+      },
+      {
+        id: "day-13",
+        done: false,
+        title: "Day 13: API States",
+        series: "React JS Series",
+        accent: "#f97316",
+        icon: "13",
+        summary: "Loading, error handling, retry, and reusable API services.",
+        intro: "Make API screens feel professional and resilient.",
+        subtabs: [
+          { title: "Loading State", description: "Show spinners or skeletons while data is loading.", points: ["isLoading", "empty state", "skeleton UI", "disable duplicate actions"] },
+          { title: "Error State", description: "Show useful errors and fallback UI.", points: ["try/catch", "error message", "network failure", "not found"] },
+          { title: "Retry", description: "Add a retry button and reusable request pattern.", points: ["retry button", "reload function", "service reuse", "toast message"] }
+        ],
+        flow: ["Add loading", "Add error", "Add retry", "Extract service"]
+      },
+      {
+        id: "day-14",
+        done: false,
+        title: "Day 14: TanStack Query",
+        series: "React JS Series",
+        accent: "#14b8a6",
+        icon: "14",
+        summary: "useQuery, useMutation, and cache.",
+        intro: "TanStack Query is the production way to manage server state in React.",
+        subtabs: [
+          { title: "useQuery", description: "Fetch and cache server data declaratively.", points: ["QueryClient", "QueryClientProvider", "queryKey", "queryFn"], snippets: [{ label: "Install", code: "npm install @tanstack/react-query" }] },
+          { title: "useMutation", description: "Create, update, and delete server data.", points: ["mutationFn", "onSuccess", "invalidateQueries", "optimistic update idea"] },
+          { title: "Cache", description: "Explain stale time, refetching, and cache invalidation.", points: ["staleTime", "refetch", "cache", "devtools"] }
+        ],
+        flow: ["Setup QueryClient", "Fetch with useQuery", "Mutate data", "Invalidate cache"]
+      },
+      {
+        id: "day-15",
+        done: false,
+        title: "Day 15: Context API",
+        series: "React JS Series",
+        accent: "#6366f1",
+        icon: "15",
+        summary: "Context API for shared state.",
+        intro: "Use Context for app-level values like theme, auth user, and language.",
+        subtabs: [
+          { title: "Create Context", description: "Create and type a React context.", points: ["createContext", "Provider", "value", "useContext"] },
+          { title: "Provider Pattern", description: "Wrap the app and expose shared state.", points: ["Theme provider", "Auth provider", "Custom hook", "Provider placement"] },
+          { title: "When To Use", description: "Explain when Context is useful and when it becomes too much.", points: ["Avoid prop drilling", "Global-ish data", "Not every state", "Performance awareness"] }
+        ],
+        flow: ["Create context", "Build provider", "Consume value", "Add custom hook"]
+      },
+      {
+        id: "day-16",
+        done: false,
+        title: "Day 16: useReducer",
+        series: "React JS Series",
+        accent: "#0f766e",
+        icon: "16",
+        summary: "useReducer for complex state.",
+        intro: "useReducer helps when state transitions become more structured.",
+        subtabs: [
+          { title: "Reducer Mindset", description: "Explain state, action, reducer, and dispatch.", points: ["state", "action", "reducer function", "dispatch"] },
+          { title: "Todo Reducer", description: "Build add, toggle, delete actions.", points: ["Action union type", "switch action.type", "immutable updates", "default case"] },
+          { title: "Reducer vs useState", description: "Compare when to choose each option.", points: ["Simple state", "Complex transitions", "Multiple fields", "Predictable updates"] }
+        ],
+        flow: ["Explain reducer", "Build todo reducer", "Dispatch actions", "Compare with useState"]
+      },
+      {
+        id: "day-17",
+        done: false,
+        title: "Day 17: Custom Hooks",
+        series: "React JS Series",
+        accent: "#84cc16",
+        icon: "17",
+        summary: "Extract reusable logic with custom hooks.",
+        intro: "Custom hooks are how React developers share behavior without duplicating code.",
+        subtabs: [
+          { title: "Hook Rules", description: "Explain naming and the rules of hooks.", points: ["Starts with use", "Call at top level", "Call inside React functions", "Return useful state/actions"] },
+          { title: "useLocalStorage", description: "Build a practical persistence hook.", points: ["Initial value", "Read localStorage", "Write on change", "Typed generic"] },
+          { title: "useFetch", description: "Extract API loading and error logic.", points: ["loading", "data", "error", "refetch"] }
+        ],
+        flow: ["Find duplicated logic", "Extract custom hook", "Use in two components"]
+      },
+      {
+        id: "day-18",
+        done: false,
+        title: "Day 18: Performance",
+        series: "React JS Series",
+        accent: "#eab308",
+        icon: "18",
+        summary: "React.memo, useMemo, and useCallback.",
+        intro: "Teach performance tools with clear warnings about premature optimization.",
+        subtabs: [
+          { title: "React.memo", description: "Skip child re-render when props are unchanged.", points: ["Memoized component", "Props comparison", "When it helps", "When it does not"] },
+          { title: "useMemo", description: "Memoize expensive calculated values.", points: ["Derived value", "Dependency array", "Expensive calculation", "Avoid overuse"] },
+          { title: "useCallback", description: "Memoize function references passed to children.", points: ["Stable callback", "Child props", "Dependency array", "Pair with React.memo"] }
+        ],
+        flow: ["Show re-render", "Use React.memo", "Add useMemo", "Add useCallback"]
+      },
+      {
+        id: "day-19",
+        done: false,
+        title: "Day 19: Lazy Loading & Suspense",
+        series: "React JS Series",
+        accent: "#a855f7",
+        icon: "19",
+        summary: "Lazy loading, Suspense, and code splitting.",
+        intro: "Improve initial load by splitting large pages and components.",
+        subtabs: [
+          { title: "React.lazy", description: "Load components only when needed.", points: ["lazy import", "dynamic import", "route-level split", "bundle idea"] },
+          { title: "Suspense", description: "Show fallback UI while lazy code loads.", points: ["Suspense wrapper", "fallback", "loading UI", "nested suspense"] },
+          { title: "Code Splitting", description: "Explain practical splitting for routes and heavy screens.", points: ["Initial bundle", "Lazy routes", "Feature chunks", "Measure before optimizing"] }
+        ],
+        flow: ["Create lazy component", "Wrap with Suspense", "Lazy-load route", "Explain bundle benefit"]
+      },
+      {
+        id: "day-20",
+        done: false,
+        title: "Day 20: Production & Revision",
+        series: "React JS Series",
+        accent: "#111827",
+        icon: "20",
+        summary: "Testing, folder structure, production patterns, and interview revision.",
+        intro: "Close the series by turning beginner knowledge into production habits and interview confidence.",
+        subtabs: [
+          { title: "Testing", description: "Introduce testing with React Testing Library and Vitest.", points: ["Render component", "Find by role/text", "User event", "Test behavior"] },
+          { title: "Folder Structure", description: "Organize features, components, hooks, services, and types.", points: ["Feature folders", "shared components", "api services", "types"] },
+          { title: "Interview Revision", description: "Revise the most common React interview topics from the series.", points: ["State vs props", "useEffect", "keys", "performance hooks", "controlled forms"] }
+        ],
+        flow: ["Add simple test", "Review folder structure", "Summarize production patterns", "Interview revision"]
+      }
+    ];
+
+    const workspace = document.getElementById("workspace");
+    const topicBoard = document.getElementById("topicBoard");
+    const detailsPanel = document.getElementById("detailsPanel");
+    const resetBtn = document.getElementById("resetBtn");
+
+    let activeTopic = null;
+    let activeSubtab = 0;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function renderTopics() {
+      topicBoard.innerHTML = topics.map((topic, index) => `
+        <button class="topic-card ${activeTopic === topic.id ? "active" : ""} ${topic.done ? "done" : ""}" type="button" data-topic="${topic.id}" style="--accent: ${topic.accent}; --i: ${index};">
+          <span class="topic-top">
+            <span class="topic-icon">${topic.icon}</span>
+            <span>
+              <h2>${topic.title}</h2>
+            </span>
+          </span>
+          <p>${topic.summary}</p>
+          <span class="topic-meta">
+            <span>${topic.series}</span>
+            <span class="topic-status ${topic.done ? "done" : ""}">${topic.done ? "Done" : "Pending"}</span>
+            <span class="topic-count">${topic.subtabs.length} subtopics</span>
+          </span>
+        </button>
+      `).join("");
+    }
+
+    function renderDetails(topicId) {
+      const topic = topics.find((item) => item.id === topicId);
+      if (!topic) {
+        return;
+      }
+
+      const subtab = topic.subtabs[activeSubtab] || topic.subtabs[0];
+      detailsPanel.style.setProperty("--detail-accent", topic.accent);
+      detailsPanel.innerHTML = `
+        <header class="details-head">
+          <span class="lesson-label">${topic.done ? "Done Â· " : "Pending Â· "}${topic.series} Â· Episode Topic</span>
+          <h2>${topic.title}</h2>
+          <div class="topic-logo react-mark" aria-hidden="true">React</div>
+        </header>
+        <div class="details-body">
+          <div class="subtabs">
+            ${topic.subtabs.map((tab, index) => `
+              <button class="subtab ${index === activeSubtab ? "active" : ""}" type="button" data-subtab="${index}">${tab.title}</button>
+            `).join("")}
+          </div>
+          <article class="lesson-card">
+            <h3>${subtab.title}</h3>
+            <p>${subtab.description}</p>
+            <div class="points">
+              ${subtab.points.map((point, index) => `<div class="point"><span>${index + 1}</span>${point}</div>`).join("")}
+            </div>
+            ${subtab.snippets ? `
+              <div class="code-blocks">
+                ${subtab.snippets.map((snippet) => `
+                  <div class="code-block ${subtab.title === "Theory" ? "theory-note" : ""}">
+                    <div class="code-title">${snippet.label}</div>
+                    <pre class="${snippet.code.startsWith("http") ? "url-line" : ""}">${escapeHtml(snippet.code)}</pre>
+                  </div>
+                `).join("")}
+              </div>
+            ` : ""}
+          </article>
+        </div>
+      `;
+    }
+
+    topicBoard.addEventListener("click", (event) => {
+      const card = event.target.closest(".topic-card");
+      if (!card) {
+        return;
+      }
+
+      activeTopic = card.dataset.topic;
+      activeSubtab = 0;
+      workspace.classList.remove("overview");
+      workspace.classList.add("focus");
+      renderTopics();
+      renderDetails(activeTopic);
+      detailsPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    detailsPanel.addEventListener("click", (event) => {
+      const subtab = event.target.closest(".subtab");
+      if (!subtab || !activeTopic) {
+        return;
+      }
+
+      activeSubtab = Number(subtab.dataset.subtab);
+      renderDetails(activeTopic);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      activeTopic = null;
+      activeSubtab = 0;
+      workspace.classList.remove("focus");
+      workspace.classList.add("overview");
+      renderTopics();
+      detailsPanel.innerHTML = `
+        <div class="empty-state">
+          <div>
+            <strong>Select a topic</strong>
+            <span>All tutorial days are visible first. Click one day to open the detailed teaching plan.</span>
+          </div>
+        </div>
+      `;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderTopics();
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

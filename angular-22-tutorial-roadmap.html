@@ -272,6 +272,7 @@
       min-height: 112px;
       padding: 16px;
     }
+
     .topic-card.done {
       border-color: var(--done-border);
       background: linear-gradient(135deg, var(--done-bg), #f0fdf4);
@@ -295,6 +296,7 @@
       background: var(--card-solid);
       box-shadow: 0 22px 58px color-mix(in srgb, var(--accent) 20%, transparent);
     }
+
     .topic-card.done:hover,
     .topic-card.done.active {
       border-color: var(--done-border);
@@ -352,6 +354,7 @@
     .topic-count {
       color: color-mix(in srgb, var(--accent) 80%, black);
     }
+
     .topic-status {
       padding: 4px 8px;
       border-radius: 999px;
@@ -728,12 +731,11 @@
   <main class="shell">
     <section class="hero">
       <div class="hero-content">
-        <div class="badge"><span class="badge-dot"></span> YouTube Tutorial Planner</div>
-        <h1><span class="shine">Angular 22</span><br>Tutorial Roadmap</h1>
+        <div class="badge"><span class="badge-dot"></span> YouTube Tutorial Hindi</div>
+        <h1><span class="shine">Angular 22</span><br> Tutorial Hindi </h1>
 
         <div class="hero-actions">
-          <span class="hero-chip">Basic Series</span>
-          <span class="hero-chip">Advanced Series</span>
+          <span class="hero-chip">Basic Series</span> 
           <span class="hero-chip">Episode-by-Episode Flow</span>
         </div>
       </div>
@@ -745,7 +747,7 @@
         </div>
         <div class="stat">
           <div class="stat-mark">A</div>
-          <div><strong>Advanced Track</strong><span>Signals, architecture, performance, auth, deployment</span></div>
+          <div><strong>Job Ready Course </strong><span>Real Time Concepts, Hands On Experience</span></div>
           <small>Next</small>
         </div>
         <div class="stat">
@@ -777,7 +779,7 @@
     const topics = [
       {
         id: "setup",
-        done: true,
+        done: false,
         title: "Installation & Setup",
         series: "Basic Series",
         accent: "#2563eb",
@@ -817,7 +819,7 @@
       },
       {
         id: "components",
-        done: true,
+        done: false,
         title: "Components",
         series: "Basic Series",
         accent: "#0ea5e9",
@@ -851,7 +853,7 @@
       },
       {
         id: "binding",
-        done: true,
+        done: false,
         title: "Data Binding",
         series: "Basic Series",
         accent: "#7c3aed",
@@ -882,7 +884,7 @@
       },
       {
         id: "routing",
-        done: true,
+        done: false,
         title: "Routing",
         series: "Basic Series",
         accent: "#06b6d4",
@@ -916,7 +918,7 @@
       },
       {
         id: "directives",
-        done: true,
+        done: false,
         title: "Directives",
         series: "Basic Series",
         accent: "#10b981",
@@ -944,7 +946,7 @@
       },
       {
         id: "control-flow",
-        done: true,
+        done: false,
         title: "Control Flow",
         series: "Basic Series",
         accent: "#f59e0b",
@@ -978,7 +980,7 @@
       },
       {
         id: "Template_Forms",
-        done: true,
+        done: false,
         title: "Template Forms",
         series: "Basic Series",
         accent: "#ec4899",
@@ -993,7 +995,7 @@
             snippets: [
               { label: "Template Form", code: "<form #userForm=\"ngForm\" (ngSubmit)=\"saveUser(userForm.value)\">\n  <input name=\"name\" ngModel required>\n  <button type=\"submit\">Save</button>\n</form>" }
             ]
-          }, 
+          },
           {
             title: "Validation",
             description: "Show user-friendly validation messages and disable invalid submit actions.",
@@ -1005,7 +1007,7 @@
 
       {
         id: "Reactive_Forms",
-        done: true,
+        done: false,
         title: "Reactive Forms",
         series: "Basic Series",
         accent: "#ec4899",
@@ -1039,7 +1041,7 @@
       },
       {
         id: "signal",
-        done: true,
+        done: false,
         title: "Signal Basics",
         series: "Basic Series",
         accent: "#ec4899",
@@ -1058,19 +1060,19 @@
           {
             title: "How to Access / Read Signal",
             description: "Signal; Read",
-            points: ["Signal"], 
+            points: ["Signal"],
           },
           {
             title: "How to Update Signal",
-            description: "Update", 
+            description: "Update",
           }
         ],
         flow: ["Start with reactive form", "Add validation", "Show clean error messages"]
       },
 
-        {
+      {
         id: "singnalForm",
-        done: true,
+        done: false,
         title: "Signal Forms",
         series: "Basic Series",
         accent: "#ec4899",
@@ -1078,7 +1080,7 @@
         summary: "Signal forms, and validation messages.",
         intro: "Forms are essential for real Angular projects, so this can be split into practical episodes.",
         subtabs: [
-           
+
           {
             title: "Signal Forms",
             description: "Use FormGroup and FormControl for scalable forms.",
@@ -1134,17 +1136,17 @@
         flow: ["Create service", "Call GET API", "Submit POST data", "Update with PUT", "Delete with confirmation"]
       },
       {
-        id: "signals",
+        id: "service",
         done: false,
-        title: "Signals",
-        series: "Basic + Advanced",
+        title: "Service",
+        series: "Basic",
         accent: "#14b8a6",
         icon: "SG",
-        summary: "Signal state, computed values, effects, and component communication ideas.",
-        intro: "Signals are a major modern Angular topic and deserve a clean visual explanation with small examples.",
+        summary: "Service serves  Reusablity, Creating utility Fucntiona dn stroe api call fucntions ",
+        intro: "Service serves  Reusablity, Creating utility Fucntiona dn stroe api call fucntions ",
         subtabs: [
           {
-            title: "Signal Basics",
+            title: "Service Basics",
             description: "Create signal state and update it from the template.",
             points: ["signal()", "Read signal value", "set()", "update()"],
             snippets: [
@@ -1152,7 +1154,7 @@
             ]
           },
           {
-            title: "Computed",
+            title: "API Call Functions",
             description: "Derive values automatically from existing signal state.",
             points: ["computed()", "Derived values", "Filtering example", "Cart total example"],
             snippets: [
@@ -1160,41 +1162,507 @@
             ]
           },
           {
-            title: "Effect",
+            title: "RXJS",
             description: "React to signal changes for logging, persistence, or side effects.",
             points: ["effect()", "When to use", "When to avoid", "Cleanup mindset"]
           }
         ],
         flow: ["Explain reactive state", "Build counter", "Add computed value", "Use effect carefully"]
       },
-      {
-        id: "advanced",
+     {
+        id: "pipes",
         done: false,
-        title: "Advanced Angular",
-        series: "Advanced Series",
+        title: "Pipes",
+        series: "Basic Series",
         accent: "#111827",
-        icon: "AD",
-        summary: "Services, guards, interceptors, lazy loading, performance, auth, and deployment.",
-        intro: "This section can become your second series after the basic track is complete.",
+        icon: "PI",
+        summary: "Format and transform data directly inside templates.",
+        intro: "Pipes make template data presentation clean and reusable.",
         subtabs: [
           {
-            title: "Architecture",
-            description: "Organize folders, shared components, services, models, and feature areas.",
-            points: ["Feature structure", "Shared UI", "Services", "Models"]
+            title: "Built-in Pipes",
+            description: "Use Angular's built-in pipes.",
+            points: [
+              "DatePipe",
+              "CurrencyPipe",
+              "UpperCasePipe",
+              "JsonPipe"
+            ],
+            snippets: [
+              {
+                label: "Date Pipe",
+                code: "{{ today | date:'dd/MM/yyyy' }}"
+              }
+            ]
           },
           {
-            title: "Security & APIs",
-            description: "Add guards, interceptors, auth tokens, and protected routes.",
-            points: ["Route guards", "HTTP interceptor", "Token handling", "Protected dashboard"]
+            title: "Pipe Chaining",
+            description: "Apply multiple pipes together.",
+            points: [
+              "Multiple pipes",
+              "Formatting",
+              "Readability",
+              "Best practices"
+            ]
           },
           {
-            title: "Performance & Deploy",
-            description: "Make the app faster and prepare it for production hosting.",
-            points: ["Lazy loading", "Build command", "Environment files", "Deployment flow"]
+            title: "Custom Pipes",
+            description: "Create your own reusable pipe.",
+            points: [
+              "Generate pipe",
+              "Transform method",
+              "Reusable formatting",
+              "Real project examples"
+            ],
+            snippets: [
+              {
+                label: "Generate Pipe",
+                code: "ng g pipe pipes/fullName"
+              }
+            ]
           }
         ],
-        flow: ["Split into feature modules or areas", "Add auth flow", "Improve performance", "Build and deploy"]
-      }
+        flow: [
+          "Built-in pipes",
+          "Format values",
+          "Create custom pipe",
+          "Use in application"
+        ]
+      },
+      
+      {
+        id: "lifecycle-hooks",
+        done: false,
+        title: "Lifecycle Hooks",
+        series: "Basic Series",
+        accent: "#8b5cf6",
+        icon: "LH",
+        summary: "Understand component lifecycle and Angular execution flow.",
+        intro: "Learn when Angular creates, updates, and destroys components.",
+        subtabs: [
+          {
+            title: "ngOnInit",
+            description: "Execute code when component initializes.",
+            points: [
+              "Component initialization",
+              "API loading",
+              "Constructor vs ngOnInit",
+              "Best practices"
+            ],
+            snippets: [
+              {
+                label: "ngOnInit",
+                code: "ngOnInit() {\n  this.loadUsers();\n}"
+              }
+            ]
+          },
+          {
+            title: "ngOnChanges",
+            description: "React when input values change.",
+            points: [
+              "Input changes",
+              "SimpleChanges",
+              "Update UI",
+              "Parent-child communication"
+            ]
+          },
+          {
+            title: "ngOnDestroy",
+            description: "Cleanup subscriptions and resources.",
+            points: [
+              "Memory leaks",
+              "Unsubscribe",
+              "Cleanup logic",
+              "Destroy component"
+            ]
+          }
+        ],
+        flow: [
+          "Explain lifecycle",
+          "Implement ngOnInit",
+          "Handle changes",
+          "Cleanup with ngOnDestroy"
+        ]
+      },
+      //  {
+      //   id: "How to Setup Project",
+      //   done: false,
+      //   title: "Clean, Scalable & Production Ready",
+      //   series: "Basic Series",
+      //   accent: "#8b5cf6",
+      //   icon: "LH",
+      //   summary: "Best Angular folder structure for production",
+      //   intro: "Learn when Angular creates, updates, and destroys components.",
+      //   subtabs: [
+      //     {
+      //       title: "ngOnInit",
+      //       description: "Execute code when component initializes.",
+      //       points: [
+      //         "Component initialization",
+      //         "API loading",
+      //         "Constructor vs ngOnInit",
+      //         "Best practices"
+      //       ],
+      //       snippets: [
+      //         {
+      //           label: "ngOnInit",
+      //           code: "ngOnInit() {\n  this.loadUsers();\n}"
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       title: "ngOnChanges",
+      //       description: "React when input values change.",
+      //       points: [
+      //         "Input changes",
+      //         "SimpleChanges",
+      //         "Update UI",
+      //         "Parent-child communication"
+      //       ]
+      //     },
+      //     {
+      //       title: "ngOnDestroy",
+      //       description: "Cleanup subscriptions and resources.",
+      //       points: [
+      //         "Memory leaks",
+      //         "Unsubscribe",
+      //         "Cleanup logic",
+      //         "Destroy component"
+      //       ]
+      //     }
+      //   ],
+      //   flow: [
+      //     "Explain lifecycle",
+      //     "Implement ngOnInit",
+      //     "Handle changes",
+      //     "Cleanup with ngOnDestroy"
+      //   ]
+      // },
+      // {
+      //   id: "Project",
+      //   done: false,
+      //   title: "Employee Management App Project",
+      //   series: "Basic Series",
+      //   accent: "#8b5cf6",
+      //   icon: "LH",
+      //   summary: "Complete Project From Scratch With Api",
+      //   intro: "Learn when Angular creates, updates, and destroys components.",
+      //   subtabs: [
+      //     {
+      //       title: "ngOnInit",
+      //       description: "Execute code when component initializes.",
+      //       points: [
+      //         "Component initialization",
+      //         "API loading",
+      //         "Constructor vs ngOnInit",
+      //         "Best practices"
+      //       ],
+      //       snippets: [
+      //         {
+      //           label: "ngOnInit",
+      //           code: "ngOnInit() {\n  this.loadUsers();\n}"
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       title: "ngOnChanges",
+      //       description: "React when input values change.",
+      //       points: [
+      //         "Input changes",
+      //         "SimpleChanges",
+      //         "Update UI",
+      //         "Parent-child communication"
+      //       ]
+      //     },
+      //     {
+      //       title: "ngOnDestroy",
+      //       description: "Cleanup subscriptions and resources.",
+      //       points: [
+      //         "Memory leaks",
+      //         "Unsubscribe",
+      //         "Cleanup logic",
+      //         "Destroy component"
+      //       ]
+      //     }
+      //   ],
+      //   flow: [
+      //     "Explain lifecycle",
+      //     "Implement ngOnInit",
+      //     "Handle changes",
+      //     "Cleanup with ngOnDestroy"
+      //   ]
+      // },
+      // {
+      //   id: "advanced-login-hardcoded-guard",
+      //   done: false,
+      //   title: "Login with Hardcoded Data & Guard",
+      //   series: "Advanced Series",
+      //   accent: "#2563eb",
+      //   icon: "A1",
+      //   summary: "Build a login flow with hardcoded users and protect routes using Angular guards.",
+      //   intro: "Start the advanced series with authentication basics before connecting to a real backend.",
+      //   subtabs: [
+      //     {
+      //       title: "Hardcoded Login",
+      //       description: "Create a simple login page and validate the username/password against local data.",
+      //       points: ["Login component", "Hardcoded user object", "Form validation", "Success and failure messages"],
+      //       snippets: [
+      //         { label: "Hardcoded User", code: "private user = {\n  email: 'admin@test.com',\n  password: 'admin123'\n};" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Auth Service",
+      //       description: "Move login state into a reusable service so components do not own authentication logic.",
+      //       points: ["AuthService", "isLoggedIn flag", "login method", "logout method"],
+      //       snippets: [
+      //         { label: "Login Method", code: "login(email: string, password: string) {\n  const valid = email === this.user.email && password === this.user.password;\n  this.isLoggedIn = valid;\n  return valid;\n}" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Route Guard",
+      //       description: "Protect dashboard routes and redirect anonymous users back to login.",
+      //       points: ["Create auth guard", "Check login status", "Return true or UrlTree", "Apply guard on routes"],
+      //       snippets: [
+      //         { label: "Guard Route", code: "{\n  path: 'dashboard',\n  component: DashboardComponent,\n  canActivate: [authGuard]\n}" }
+      //       ]
+      //     }
+      //   ],
+      //   flow: ["Create login UI", "Validate hardcoded user", "Store auth state", "Add guard", "Test protected route"]
+      // },
+      // {
+      //   id: "advanced-login-api",
+      //   done: false,
+      //   title: "Login with API",
+      //   series: "Advanced Series",
+      //   accent: "#0ea5e9",
+      //   icon: "A2",
+      //   summary: "Connect the login form to a backend API and handle loading, success, and error states.",
+      //   intro: "Replace hardcoded validation with real API communication using HttpClient.",
+      //   subtabs: [
+      //     {
+      //       title: "Login Endpoint",
+      //       description: "Send user credentials to an API endpoint from an Angular service.",
+      //       points: ["HttpClient POST", "Credentials payload", "Typed response", "Error handling"],
+      //       snippets: [
+      //         { label: "Login API Call", code: "login(payload: LoginRequest) {\n  return this.http.post<LoginResponse>(`${this.apiUrl}/login`, payload);\n}" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Component Flow",
+      //       description: "Handle submit, loading state, success navigation, and wrong credentials.",
+      //       points: ["Disable submit while loading", "Show API error", "Navigate after success", "Keep component clean"]
+      //     },
+      //     {
+      //       title: "Auth State",
+      //       description: "Store the logged-in user or token in the service after successful API login.",
+      //       points: ["Save response", "Expose logged-in status", "Logout cleanup", "Route guard integration"]
+      //     }
+      //   ],
+      //   flow: ["Build login form", "Call API", "Handle loading/error", "Save auth result", "Navigate to dashboard"]
+      // },
+      // {
+      //   id: "advanced-jwt-interceptor",
+      //   done: false,
+      //   title: "Login with API, JWT & Interceptor",
+      //   series: "Advanced Series",
+      //   accent: "#7c3aed",
+      //   icon: "A3",
+      //   summary: "Use JWT tokens and an HTTP interceptor to attach authorization headers automatically.",
+      //   intro: "Teach the production authentication pattern used in many Angular applications.",
+      //   subtabs: [
+      //     {
+      //       title: "JWT Token",
+      //       description: "Read the token from the login API response and store it for later requests.",
+      //       points: ["Access token", "Local storage", "Token expiry idea", "Logout removes token"],
+      //       snippets: [
+      //         { label: "Save Token", code: "localStorage.setItem('token', response.token);" }
+      //       ]
+      //     },
+      //     {
+      //       title: "HTTP Interceptor",
+      //       description: "Attach the bearer token to outgoing API calls from one central place.",
+      //       points: ["Create interceptor", "Clone request", "Authorization header", "Pass request to next handler"],
+      //       snippets: [
+      //         { label: "Authorization Header", code: "const authReq = req.clone({\n  setHeaders: {\n    Authorization: `Bearer ${token}`\n  }\n});" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Unauthorized Handling",
+      //       description: "Handle 401 responses by clearing login data and redirecting to the login page.",
+      //       points: ["Catch 401", "Clear storage", "Navigate to login", "Protect secure pages"]
+      //     }
+      //   ],
+      //   flow: ["Save JWT", "Create interceptor", "Attach token", "Handle 401", "Test protected API"]
+      // },
+      // {
+      //   id: "advanced-viewchild",
+      //   done: false,
+      //   title: "ViewChild",
+      //   series: "Advanced Series",
+      //   accent: "#10b981",
+      //   icon: "A4",
+      //   summary: "Access template elements and child components from a parent component.",
+      //   intro: "Show when ViewChild is useful and when normal binding is still the better option.",
+      //   subtabs: [
+      //     {
+      //       title: "Element Reference",
+      //       description: "Use ViewChild to access a DOM element after the view is initialized.",
+      //       points: ["Template reference variable", "@ViewChild", "ElementRef", "ngAfterViewInit"],
+      //       snippets: [
+      //         { label: "Input Focus", code: "@ViewChild('nameInput') nameInput!: ElementRef;\n\nngAfterViewInit() {\n  this.nameInput.nativeElement.focus();\n}" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Child Component",
+      //       description: "Call a public method or read a public value from a child component.",
+      //       points: ["Parent-child access", "Public child method", "Timing after view init", "Avoid overuse"]
+      //     },
+      //     {
+      //       title: "Best Practices",
+      //       description: "Explain safe use cases and common mistakes.",
+      //       points: ["Prefer binding first", "Avoid direct DOM changes", "Use Renderer2 when needed", "Check undefined values"]
+      //     }
+      //   ],
+      //   flow: ["Create template reference", "Access element", "Access child component", "Discuss best practices"]
+      // },
+      // {
+      //   id: "advanced-reusable-input-output",
+      //   done: false,
+      //   title: "Reusable Component: Input & Output",
+      //   series: "Advanced Series",
+      //   accent: "#f59e0b",
+      //   icon: "A5",
+      //   summary: "Build reusable components with @Input data and @Output events.",
+      //   intro: "Turn repeated UI into flexible components that communicate with their parent.",
+      //   subtabs: [
+      //     {
+      //       title: "@Input",
+      //       description: "Pass data from parent component to child component.",
+      //       points: ["Child input property", "Parent binding", "Reusable card", "Default values"],
+      //       snippets: [
+      //         { label: "Child Input", code: "@Input() title = '';\n@Input() description = '';" }
+      //       ]
+      //     },
+      //     {
+      //       title: "@Output",
+      //       description: "Send events from child component back to parent component.",
+      //       points: ["EventEmitter", "Emit selected item", "Parent handler", "Delete/edit action"],
+      //       snippets: [
+      //         { label: "Child Output", code: "@Output() selected = new EventEmitter<number>();\n\nselectItem(id: number) {\n  this.selected.emit(id);\n}" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Reusable Card",
+      //       description: "Create one reusable list/card component and use it for multiple data items.",
+      //       points: ["Reusable UI", "Inputs for display", "Outputs for actions", "Clean parent template"]
+      //     }
+      //   ],
+      //   flow: ["Create child component", "Add inputs", "Add output event", "Reuse in parent list"]
+      // },
+      // {
+      //   id: "advanced-custom-directive",
+      //   done: false,
+      //   title: "Custom Directive: HostListener & ElementRef",
+      //   series: "Advanced Series",
+      //   accent: "#ec4899",
+      //   icon: "A6",
+      //   summary: "Create custom attribute directives for reusable DOM behavior.",
+      //   intro: "Move repeated DOM behavior into a directive instead of copying code into components.",
+      //   subtabs: [
+      //     {
+      //       title: "Create Directive",
+      //       description: "Generate an attribute directive and apply it to an HTML element.",
+      //       points: ["ng generate directive", "Selector usage", "Reusable behavior", "Attribute directive mindset"],
+      //       snippets: [
+      //         { label: "Generate Directive", code: "ng generate directive directives/highlight" }
+      //       ]
+      //     },
+      //     {
+      //       title: "ElementRef",
+      //       description: "Access the host element and update simple styles.",
+      //       points: ["Host element", "nativeElement", "Style update", "Renderer2 recommendation"]
+      //     },
+      //     {
+      //       title: "HostListener",
+      //       description: "Listen to mouse or keyboard events on the host element.",
+      //       points: ["mouseenter", "mouseleave", "click", "Reusable hover behavior"],
+      //       snippets: [
+      //         { label: "HostListener", code: "@HostListener('mouseenter') onMouseEnter() {\n  this.el.nativeElement.style.backgroundColor = 'yellow';\n}" }
+      //       ]
+      //     }
+      //   ],
+      //   flow: ["Generate directive", "Apply selector", "Use ElementRef", "Add HostListener", "Reuse directive"]
+      // },
+      // {
+      //   id: "advanced-ng-container-template",
+      //   done: false,
+      //   title: "ng-container & ng-template & ng-Content",
+      //   series: "Advanced Series",
+      //   accent: "#8b5cf6",
+      //   icon: "A7",
+      //   summary: "Use invisible containers and reusable template blocks for cleaner Angular templates.",
+      //   intro: "Explain how Angular can group logic without adding unnecessary DOM elements.",
+      //   subtabs: [
+      //     {
+      //       title: "ng-container",
+      //       description: "Group conditions or loops without rendering an extra wrapper element.",
+      //       points: ["Invisible wrapper", "Cleaner DOM", "Control flow grouping", "Avoid extra divs"],
+      //       snippets: [
+      //         { label: "ng-container", code: "<ng-container *ngIf=\"isLoggedIn\">\n  <h2>Dashboard</h2>\n  <p>Welcome back</p>\n</ng-container>" }
+      //       ]
+      //     },
+      //     {
+      //       title: "ng-template",
+      //       description: "Define template content that Angular renders only when needed.",
+      //       points: ["Template block", "else template", "Reusable UI fragment", "Template reference"],
+      //       snippets: [
+      //         { label: "ng-template Else", code: "<div *ngIf=\"users.length; else noUsers\">Users found</div>\n\n<ng-template #noUsers>\n  <p>No users available</p>\n</ng-template>" }
+      //       ]
+      //     },
+      //     {
+      //       title: "Practical Use",
+      //       description: "Use containers and templates for loading, empty, and permission states.",
+      //       points: ["Loading template", "Empty state", "Permission block", "Readable HTML"]
+      //     }
+      //   ],
+      //   flow: ["Explain invisible container", "Create else template", "Build empty/loading states"]
+      // },
+      // {
+      //   id: "advanced-subject-behaviorsubject",
+      //   done: false,
+      //   title: "Subject & BehaviorSubject",
+      //   series: "Advanced Series",
+      //   accent: "#14b8a6",
+      //   icon: "A8",
+      //   summary: "Share data between components using RxJS Subject and BehaviorSubject.",
+      //   intro: "Introduce reactive communication for components that do not have a direct parent-child relationship.",
+      //   subtabs: [
+      //     {
+      //       title: "Subject",
+      //       description: "Emit values from a service and subscribe from another component.",
+      //       points: ["RxJS Subject", "next()", "subscribe()", "Event-style communication"],
+      //       snippets: [
+      //         { label: "Subject Service", code: "private refreshSource = new Subject<void>();\nrefresh$ = this.refreshSource.asObservable();\n\ntriggerRefresh() {\n  this.refreshSource.next();\n}" }
+      //       ]
+      //     },
+      //     {
+      //       title: "BehaviorSubject",
+      //       description: "Store the latest value and immediately share it with new subscribers.",
+      //       points: ["Initial value", "Current value", "asObservable()", "Shared state"],
+      //       snippets: [
+      //         { label: "BehaviorSubject State", code: "private userSource = new BehaviorSubject<User | null>(null);\nuser$ = this.userSource.asObservable();\n\nsetUser(user: User) {\n  this.userSource.next(user);\n}" }
+      //       ]
+      //     },
+      //     {
+      //       title: "When To Use",
+      //       description: "Compare Subject, BehaviorSubject, signals, and simple @Input/@Output communication.",
+      //       points: ["Sibling communication", "Auth user state", "Refresh events", "Unsubscribe awareness"]
+      //     }
+      //   ],
+      //   flow: ["Explain RxJS stream", "Build Subject event", "Build BehaviorSubject state", "Use async pipe"]
+      // },
+      
+     
     ];
 
     const workspace = document.getElementById("workspace");
@@ -1257,14 +1725,14 @@
             <h3>${subtab.title}</h3>
             <p>${subtab.description}</p>
             <div class="points">
-              ${subtab.points.map((point, index) => `<div class="point"><span>${index + 1}</span>${point}</div>`).join("")}
+              ${(subtab.points || []).map((point, index) => `<div class="point"><span>${index + 1}</span>${point}</div>`).join("")}
             </div>
             ${subtab.snippets ? `
               <div class="code-blocks">
                 ${subtab.snippets.map((snippet) => `
                   <div class="code-block">
                     <div class="code-title">${snippet.label}</div>
-                    <pre class="${snippet.code.startsWith("http") ? "url-line" : ""}">${escapeHtml(snippet.code)}</pre>
+                    <pre class="${(snippet.code || "").startsWith("http") ? "url-line" : ""}">${escapeHtml(snippet.code || "")}</pre>
                   </div>
                 `).join("")}
               </div>
@@ -1321,6 +1789,3 @@
 </body>
 
 </html>
-
-
-

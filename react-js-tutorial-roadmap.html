@@ -272,6 +272,7 @@
       min-height: 112px;
       padding: 16px;
     }
+
     .topic-card.done {
       border-color: var(--done-border);
       background: linear-gradient(135deg, var(--done-bg), #f0fdf4);
@@ -295,6 +296,7 @@
       background: var(--card-solid);
       box-shadow: 0 22px 58px color-mix(in srgb, var(--accent) 20%, transparent);
     }
+
     .topic-card.done:hover,
     .topic-card.done.active {
       border-color: var(--done-border);
@@ -352,6 +354,7 @@
     .topic-count {
       color: color-mix(in srgb, var(--accent) 80%, black);
     }
+
     .topic-status {
       padding: 4px 8px;
       border-radius: 999px;
@@ -386,7 +389,7 @@
     .details-head {
       position: relative;
       overflow: hidden;
-      padding: 30px;
+      padding: 10px;
       color: white;
       background:
         radial-gradient(circle at 88% 10%, rgba(255, 255, 255, 0.24), transparent 20rem),
@@ -576,6 +579,7 @@
       white-space: pre-wrap;
       overflow-wrap: break-word;
     }
+
     .url-line {
       color: #93c5fd;
     }
@@ -750,17 +754,17 @@
       }
 
       .react-mark {
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      border-radius: var(--radius);
-      background: rgba(97, 218, 251, 0.18);
-      color: #cffafe;
-      font-weight: 950;
-      font-size: 28px;
-    }
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: var(--radius);
+        background: rgba(97, 218, 251, 0.18);
+        color: #cffafe;
+        font-weight: 950;
+        font-size: 28px;
+      }
 
-    .topic-logo {
+      .topic-logo {
         position: relative;
         right: auto;
         bottom: auto;
@@ -776,7 +780,7 @@
   <main class="shell">
     <section class="hero">
       <div class="hero-content">
-        <div class="badge"><span class="badge-dot"></span> React Tutorial Planner</div>
+        <div class="badge"><span class="badge-dot"></span> React.js Tutorial </div>
         <h1><span class="shine">React JS</span><br>Tutorial Roadmap</h1>
 
         <div class="hero-actions">
@@ -825,7 +829,7 @@
     const topics = [
       {
         id: "day-1",
-        done: false,
+        done: true,
         title: "Day 1: React Mindset & Setup",
         series: "React JS Series",
         accent: "#2563eb",
@@ -888,40 +892,99 @@
       },
       {
         id: "day-2",
-        done: false,
-        title: "Day 2: JSX, Components & Events",
+        done: true,
+        title: "Day 2: JSX, Components",
         series: "React JS Series",
         accent: "#0ea5e9",
         icon: "02",
-        summary: "JSX, components, styling, and event handling.",
+        summary: "JSX, components, styling,CSS and Class Name",
         intro: "Show how React renders UI with JSX and how events connect the UI to component logic.",
         subtabs: [
+          {
+            title: "Theory",
+            description: "Video 2 theory script: components, rendering, JSX rules, data binding, attribute binding, and event binding in React.",
+            points: [
+              "A component is a reusable piece of UI written as a JavaScript function.",
+              "Render a component by importing it and using its capitalized name like <Header />.",
+              "JSX lets us write HTML-like markup inside JavaScript.",
+              "Use curly braces for dynamic data and camelCase names for React events.",
+              "App is the parent when it renders child components such as Header and CourseCard."
+            ],
+            snippets: [
+              {
+                label: "1. What Is a Component?",
+                code: "A component is a reusable piece of UI. A header, sidebar, login form, button, and product card can all be separate components.\n\nAngular comparison:\nAngular component class -> React JavaScript function\nAngular HTML template -> React JSX\nAngular component selector -> React component name\n<app-header> -> <Header />\n\nBasic component:\nfunction Header() {\n  return <h1>Learning React JS</h1>;\n}\n\nexport default Header;\n\nImportant rules:\n- Component names must begin with a capital letter.\n- A component must return JSX or null.\n- Components can be reused.\n- Use <Header /> to render the component."
+              },
+              {
+                label: "2. Create and Render a Component",
+                code: "Create src/components/Header.jsx:\n\nfunction Header() {\n  return (\n    <header>\n      <h1>Learning Partner Digital</h1>\n      <p>React JS Tutorial</p>\n    </header>\n  );\n}\n\nexport default Header;\n\nUse it inside App.jsx:\n\nimport Header from \"./components/Header\";\n\nfunction App() {\n  return (\n    <div>\n      <Header />\n      <h2>Welcome to React</h2>\n    </div>\n  );\n}\n\nexport default App;\n\nApp is the parent component and Header is its child component."
+              },
+              {
+                label: "3. What Is JSX?",
+                code: "JSX stands for JavaScript XML. It allows us to write HTML-like markup inside JavaScript.\n\nThe browser does not directly understand JSX, so the build tool transforms it into JavaScript. JSX makes component UI easier to read and write."
+              },
+              {
+                label: "4. Important JSX Rules",
+                code: "Rule 1: Return one parent element.\n\nWrong:\nreturn (\n  <h1>React</h1>\n  <p>Learning JSX</p>\n);\n\nCorrect with a div:\nreturn (\n  <div>\n    <h1>React</h1>\n    <p>Learning JSX</p>\n  </div>\n);\n\nCorrect with a Fragment:\nreturn (\n  <>\n    <h1>React</h1>\n    <p>Learning JSX</p>\n  </>\n);\n\nRule 2: Close every tag.\n<img src=\"/react.png\" alt=\"React\" />\n<input type=\"text\" />\n<br />\n\nRule 3: Use className instead of class.\n<h1 className=\"title\">React Tutorial</h1>\n\nRule 4: Use camelCase properties.\n<button onClick={showMessage}>Click Me</button>\n\nRule 5: Use {} for JavaScript expressions.\n\nfunction Course() {\n  const courseName = \"React JS\";\n  const duration = 20;\n\n  return (\n    <div>\n      <h2>{courseName}</h2>\n      <p>Duration: {duration} days</p>\n      <p>Total classes: {10 + 10}</p>\n    </div>\n  );\n}\n\nCurly braces can contain expressions, but statements such as if, for, and switch cannot be placed directly inside JSX."
+              },
+              {
+                label: "5. Final Practical Component Example",
+                code: "function CourseCard() {\n  const courseName = \"React JS\";\n  const trainerName = \"Chetan\";\n  const isAvailable = true;\n\n  return (\n    <div className=\"course-card\">\n      <h2>{courseName}</h2>\n      <p>Trainer: {trainerName}</p>\n      <p>Status: {isAvailable ? \"Available\" : \"Not Available\"}</p>\n      <button onClick={() => alert(\"Course selected\")}>\n        Start Learning\n      </button>\n    </div>\n  );\n}\n\nexport default CourseCard;\n\nUse it in App.jsx:\n\nimport Header from \"./components/Header\";\nimport CourseCard from \"./components/CourseCard\";\n\nfunction App() {\n  return (\n    <>\n      <Header />\n      <CourseCard />\n      <CourseCard />\n    </>\n  );\n}\n\nexport default App;\n\nRendering <CourseCard /> twice demonstrates component reuse."
+              }
+            ]
+          },
+          { title: "JSX Basics", description: "Teach JSX expressions, attributes, className, and returning one parent element.", points: ["JS inside markup", "className", "Expression braces", "Fragment wrapper"] },
+          { title: "Components", description: "Create function components and compose them inside App.", points: ["Function components", "Export/import", "Reusable UI", "Component naming"] },
+
+        ],
+        flow: ["Explain JSX", "Create components", "Add styles"]
+      },
+      {
+        id: "day-3",
+        done: true,
+        title: "Day 3: Events & Data Binding",
+        series: "React JS Series",
+        accent: "#0ea5e9",
+        icon: "03",
+        summary: "Event handling And Data Binding",
+        intro: "Show how React renders UI with JSX and how events connect the UI to component logic.",
+        subtabs: [
+          {
+            title: "Theory",
+            description: "Video 2 theory script: components, rendering, JSX rules, data binding, attribute binding, and event binding in React.",
+            points: [
+              "Use curly braces for dynamic data and camelCase names for React events.",
+              "App is the parent when it renders child components such as Header and CourseCard."
+            ],
+            snippets: [
+              {
+                label: "1. Data Binding",
+                code: "In React, display JavaScript data in JSX by placing values or expressions inside curly braces.\n\nfunction Course() {\n  const courseName = \"React JS\";\n  const isAvailable = true;\n\n  return (\n    <>\n      <h1>{courseName}</h1>\n      <p>{10 + 20}</p>\n      <p>{courseName.toUpperCase()}</p>\n      <p>{isAvailable ? \"Available\" : \"Not Available\"}</p>\n    </>\n  );\n}"
+              },
+              {
+                label: "2. Attribute Binding",
+                code: "Static attribute values use quotes. Dynamic values use curly braces.\n\nfunction Course() {\n  const imageUrl = \"/react.png\";\n  const isDisabled = true;\n  const inputType = \"email\";\n\n  return (\n    <>\n      <img src={imageUrl} alt=\"React\" />\n      <button disabled={isDisabled}>Submit</button>\n      <input type=\"text\" />\n      <input type={inputType} />\n    </>\n  );\n}"
+              },
+              {
+                label: "3. Event Binding",
+                code: "React event names use camelCase, such as onClick, onChange, onSubmit, and onMouseEnter.\n\nfunction Course() {\n  const showMessage = () => {\n    alert(\"Welcome to React!\");\n  };\n\n  return <button onClick={showMessage}>Click Me</button>;\n}\n\nPassing an argument:\n\nconst showCourse = courseName => {\n  alert(courseName);\n};\n\n<button onClick={() => showCourse(\"React JS\")}>\n  Show Course\n</button>"
+              },
+              {
+                label: "4. Passing vs Calling an Event Handler",
+                code: "onClick={showCourse}\nPasses the function. React calls it after the click.\n\nonClick={showCourse()}\nCalls the function immediately during rendering. This is wrong for this event-handler case.\n\nonClick={() => showCourse(\"React\")}\nPasses an arrow function. React calls it after the click, and the arrow function supplies the argument."
+              }
+            ]
+          },
           { title: "JSX Basics", description: "Teach JSX expressions, attributes, className, and returning one parent element.", points: ["JS inside markup", "className", "Expression braces", "Fragment wrapper"] },
           { title: "Components", description: "Create function components and compose them inside App.", points: ["Function components", "Export/import", "Reusable UI", "Component naming"] },
           { title: "Events & Styling", description: "Handle clicks and apply CSS modules, global CSS, or inline styles.", points: ["onClick", "onChange", "CSS file", "Inline style object"], snippets: [{ label: "Event Example", code: "function Button() {\n  function handleClick() {\n    console.log('Clicked');\n  }\n\n  return <button onClick={handleClick}>Save</button>;\n}" }] }
         ],
-        flow: ["Explain JSX", "Create components", "Add styles", "Handle a click event"]
-      },
-      {
-        id: "day-3",
-        done: false,
-        title: "Day 3: Props & Children",
-        series: "React JS Series",
-        accent: "#7c3aed",
-        icon: "03",
-        summary: "Props, children, and component communication.",
-        intro: "Props are the foundation for making reusable components.",
-        subtabs: [
-          { title: "Props", description: "Pass values from parent to child components with TypeScript types.", points: ["Props object", "Required props", "Optional props", "Destructuring"], snippets: [{ label: "Typed Props", code: "type UserCardProps = {\n  name: string;\n  role?: string;\n};\n\nfunction UserCard({ name, role }: UserCardProps) {\n  return <h2>{name} - {role}</h2>;\n}" }] },
-          { title: "Children", description: "Use children for flexible wrapper components.", points: ["children prop", "Card layout", "Reusable shell", "Composition"] },
-          { title: "Communication", description: "Pass callback functions from parent to child for events.", points: ["Parent owns state", "Child receives callback", "Child triggers event", "Parent updates data"] }
-        ],
-        flow: ["Build child component", "Pass props", "Use children", "Pass callback from parent"]
+        flow: ["Data Binding", "Handle a click event"]
       },
       {
         id: "day-4",
-        done: false,
-        title: "Day 4: useState Deeply",
+        done: true,
+        title: "Day 4: useState Hook",
         series: "React JS Series",
         accent: "#10b981",
         icon: "04",
@@ -936,27 +999,11 @@
       },
       {
         id: "day-5",
-        done: false,
-        title: "Day 5: Rendering Patterns",
-        series: "React JS Series",
-        accent: "#f59e0b",
-        icon: "05",
-        summary: "Conditional rendering, list rendering, keys, and fragments.",
-        intro: "Teach how React decides what to show based on data.",
-        subtabs: [
-          { title: "Conditional Rendering", description: "Show if, ternary, &&, and early return patterns.", points: ["if return", "ternary", "&& rendering", "loading/empty states"] },
-          { title: "Lists & Keys", description: "Render arrays with map and explain stable keys.", points: ["map()", "key prop", "why index can be risky", "empty list message"], snippets: [{ label: "List Rendering", code: "{users.map((user) => (\n  <UserCard key={user.id} user={user} />\n))}" }] },
-          { title: "Fragments", description: "Return grouped JSX without extra DOM nodes.", points: ["<>...</>", "No extra div", "Grouped return", "List fragments"] }
-        ],
-        flow: ["Show condition", "Render list", "Explain key", "Use fragment"]
-      },
-      {
-        id: "day-6",
-        done: false,
-        title: "Day 6: useEffect Lifecycle",
+        done: true,
+        title: "Day 5: useEffect Lifecycle",
         series: "React JS Series",
         accent: "#06b6d4",
-        icon: "06",
+        icon: "05",
         summary: "Understand useEffect lifecycle and dependency arrays.",
         intro: "Effects are where beginners often get confused, so keep this practical and visual.",
         subtabs: [
@@ -967,60 +1014,28 @@
         flow: ["Run simple effect", "Add dependency", "Add cleanup", "Debug common mistakes"]
       },
       {
+        id: "day-6",
+        done: true,
+        title: "Day 6: Condition Rendering",
+        series: "React JS Series",
+        accent: "#f59e0b",
+        icon: "06",
+        summary: "Conditional rendering, list rendering, keys, and fragments.",
+        intro: "Teach how React decides what to show based on data.",
+        subtabs: [
+          { title: "Conditional Rendering", description: "Show if, ternary, &&, and early return patterns.", points: ["if return", "ternary", "&& rendering", "loading/empty states"] },
+          { title: "Lists & Keys", description: "Render arrays with map and explain stable keys.", points: ["map()", "key prop", "why index can be risky", "empty list message"], snippets: [{ label: "List Rendering", code: "{users.map((user) => (\n  <UserCard key={user.id} user={user} />\n))}" }] },
+
+        ],
+        flow: ["Show condition", "Render list", "Explain key", "Use fragment"]
+      },
+{
         id: "day-7",
-        done: false,
-        title: "Day 7: Forms Basics",
-        series: "React JS Series",
-        accent: "#ec4899",
-        icon: "07",
-        summary: "Controlled and uncontrolled form components.",
-        intro: "Forms connect user input with React state.",
-        subtabs: [
-          { title: "Controlled Components", description: "Input value is controlled by React state.", points: ["value prop", "onChange", "state update", "submit handler"], snippets: [{ label: "Controlled Input", code: "const [name, setName] = useState('');\n\n<input value={name} onChange={(e) => setName(e.target.value)} />" }] },
-          { title: "Uncontrolled Components", description: "Use refs when the DOM owns the current value.", points: ["useRef", "Read value on submit", "Simple forms", "When to avoid"] },
-          { title: "Form Submit", description: "Prevent default submit and process values.", points: ["onSubmit", "preventDefault", "Validation basics", "Reset form"] }
-        ],
-        flow: ["Build controlled form", "Submit values", "Show uncontrolled ref example"]
-      },
-      {
-        id: "day-8",
-        done: false,
-        title: "Day 8: React Hook Form",
-        series: "React JS Series",
-        accent: "#8b5cf6",
-        icon: "08",
-        summary: "React Hook Form with validation.",
-        intro: "Move from manual state forms to a scalable form library.",
-        subtabs: [
-          { title: "Setup", description: "Install and configure React Hook Form.", points: ["Install package", "useForm", "register", "handleSubmit"], snippets: [{ label: "Install", code: "npm install react-hook-form" }] },
-          { title: "Validation", description: "Add required, minLength, pattern, and error messages.", points: ["register rules", "formState.errors", "Show error", "Disable submit"] },
-          { title: "Submit Data", description: "Read validated form data with handleSubmit.", points: ["Typed form values", "Submit callback", "Reset", "Default values"] }
-        ],
-        flow: ["Install library", "Register inputs", "Add validation", "Submit data"]
-      },
-      {
-        id: "day-9",
-        done: false,
-        title: "Day 9: Zod Validation",
-        series: "React JS Series",
-        accent: "#9333ea",
-        icon: "09",
-        summary: "Zod schema validation with React Hook Form.",
-        intro: "Schema validation makes form rules reusable and type-safe.",
-        subtabs: [
-          { title: "Zod Setup", description: "Install Zod and the Hook Form resolver.", points: ["Install zod", "Install resolvers", "Create schema", "Infer TypeScript type"], snippets: [{ label: "Install", code: "npm install zod @hookform/resolvers" }] },
-          { title: "Schema Rules", description: "Define required fields, email, min length, and custom messages.", points: ["z.object", "z.string", "email", "min"] },
-          { title: "Connect Resolver", description: "Use zodResolver inside useForm.", points: ["resolver option", "typed form data", "central validation", "clean component"] }
-        ],
-        flow: ["Create schema", "Infer type", "Connect resolver", "Show errors"]
-      },
-      {
-        id: "day-10",
-        done: false,
-        title: "Day 10: React Router Basics",
+        done: true,
+        title: "Day 7: React Router Basics",
         series: "React JS Series",
         accent: "#2563eb",
-        icon: "10",
+        icon: "07",
         summary: "Routes, navigation, and params.",
         intro: "Routing turns a React UI into a real app with multiple screens.",
         subtabs: [
@@ -1031,28 +1046,44 @@
         flow: ["Install router", "Create pages", "Add links", "Read params"]
       },
       {
-        id: "day-11",
-        done: false,
-        title: "Day 11: Advanced Routing",
+        id: "day-8",
+        done: true,
+        title: "Day 8: Props & Children",
         series: "React JS Series",
-        accent: "#0891b2",
-        icon: "11",
-        summary: "Nested routes, layout routes, and protected routes.",
-        intro: "Teach production-style route composition.",
+        accent: "#7c3aed",
+        icon: "08",
+        summary: "Props, children, and component communication. Reusable Components",
+        intro: "Props are the foundation for making reusable components.",
         subtabs: [
-          { title: "Nested Routes", description: "Render child routes with Outlet.", points: ["Parent route", "Outlet", "Child pages", "Nested navigation"] },
-          { title: "Layout Routes", description: "Share header/sidebar layouts across pages.", points: ["App layout", "Dashboard layout", "Outlet placement", "Reusable shell"] },
-          { title: "Protected Routes", description: "Restrict pages based on auth state.", points: ["Auth check", "Navigate redirect", "PrivateRoute", "Role-based route"] }
+          { title: "Props", description: "Pass values from parent to child components with TypeScript types.", points: ["Props object", "Required props", "Optional props", "Destructuring"], snippets: [{ label: "Typed Props", code: "type UserCardProps = {\n  name: string;\n  role?: string;\n};\n\nfunction UserCard({ name, role }: UserCardProps) {\n  return <h2>{name} - {role}</h2>;\n}" }] },
+          { title: "Children", description: "Use children for flexible wrapper components.", points: ["children prop", "Card layout", "Reusable shell", "Composition"] },
+          { title: "Communication", description: "Pass callback functions from parent to child for events.", points: ["Parent owns state", "Child receives callback", "Child triggers event", "Parent updates data"] }
         ],
-        flow: ["Create layout", "Add nested routes", "Build protected route"]
+        flow: ["Build child component", "Pass props", "Use children", "Pass callback from parent"]
       },
       {
-        id: "day-12",
-        done: false,
-        title: "Day 12: API Integration",
+        id: "day-9",
+        done: true,
+        title: "Day 9: GET API Integration",
         series: "React JS Series",
         accent: "#ef4444",
-        icon: "12",
+        icon: "09",
+        summary: "API integration using Axios or Fetch.",
+        intro: "Connect React to backend data and show it on screen.",
+        subtabs: [
+          { title: "Fetch API", description: "Call a GET endpoint and render response data.", points: ["fetch", "async/await", "JSON response", "state update"] },
+          { title: "Axios", description: "Use Axios for cleaner HTTP calls.", points: ["Install axios", "axios.get", "axios.post", "base URL"], snippets: [{ label: "Install", code: "npm install axios" }] },
+          { title: "Service Layer", description: "Move API calls into reusable service functions.", points: ["api folder", "typed response", "single responsibility", "reuse across components"] }
+        ],
+        flow: ["Call GET API", "Render data", "Add service function", "Compare fetch and axios"]
+      },
+       {
+        id: "day-10",
+        done: true,
+        title: "Day 10: POST API Integration & Forms" ,
+        series: "React JS Series",
+        accent: "#ef4444",
+        icon: "10",
         summary: "API integration using Axios or Fetch.",
         intro: "Connect React to backend data and show it on screen.",
         subtabs: [
@@ -1063,12 +1094,162 @@
         flow: ["Call GET API", "Render data", "Add service function", "Compare fetch and axios"]
       },
       {
+        id: "day-11",
+        done: true,
+        title: "Day 11: PUT & Delete API Integration & Forms" ,
+        series: "React JS Series",
+        accent: "#ef4444",
+        icon: "11",
+        summary: "API integration using Axios.",
+        intro: "Connect React to backend data and show it on screen.",
+        subtabs: [
+          { title: "Fetch API", description: "Call a Put and Delete endpoint and render response data.", points: ["fetch", "async/await", "JSON response", "state update"] },
+          { title: "Axios", description: "Use Axios for cleaner HTTP calls.", points: ["Install axios", "axios.get", "axios.post", "base URL"], snippets: [{ label: "Install", code: "npm install axios" }] },
+          { title: "Service Layer", description: "Move API calls into reusable service functions.", points: ["api folder", "typed response", "single responsibility", "reuse across components"] }
+        ],
+        flow: ["Call GET API", "Render data", "Add service function", "Compare fetch and axios"]
+      },
+
+       {
+        id: "day-12",
+        done: true,
+        title: "Day 12: Service in ReactJs" ,
+        series: "React JS Series",
+        accent: "#ef4444",
+        icon: "12",
+        summary: "Move API call function into Services",
+        intro: "Connect React to backend data and show it on screen.",
+        subtabs: [
+          { title: "Fetch API", description: "Call a Put and Delete endpoint and render response data.", points: ["fetch", "async/await", "JSON response", "state update"] },
+          { title: "Axios", description: "Use Axios for cleaner HTTP calls.", points: ["Install axios", "axios.get", "axios.post", "base URL"], snippets: [{ label: "Install", code: "npm install axios" }] },
+          { title: "Service Layer", description: "Move API calls into reusable service functions.", points: ["api folder", "typed response", "single responsibility", "reuse across components"] }
+        ],
+        flow: ["Call GET API", "Render data", "Add service function", "Compare fetch and axios"]
+      },
+      {
         id: "day-13",
+        done: true,
+        title: "Day 13: Zod Validation",
+        series: "React JS Series",
+        accent: "#9333ea",
+        icon: "13",
+        summary: "Zod schema validation with React Hook Form.",
+        intro: "Schema validation makes form rules reusable and type-safe.",
+        subtabs: [
+          { title: "Zod Setup", description: "Install Zod and the Hook Form resolver.", points: ["Install zod", "Install resolvers", "Create schema", "Infer TypeScript type"], snippets: [{ label: "Install", code: "npm install react-hook-form zod @hookform/resolvers" }] },
+          { title: "Schema Rules", description: "Define required fields, email, min length, and custom messages.", points: ["z.object", "z.string", "email", "min"] },
+          { title: "Connect Resolver", description: "Use zodResolver inside useForm.", points: ["resolver option", "typed form data", "central validation", "clean component"] }
+        ],
+        flow: ["Create schema", "Infer type", "Connect resolver", "Show errors"]
+      },
+
+       {
+        id: "day-14",
+        done: true,
+        title: "Day 14: useRef Hook and React.Memo",
+        series: "React JS Series",
+        accent: "#ec4899",
+        icon: "14",
+        summary: "How to Set-up Project Folders",
+        intro: "Project Folders- Seperation of Files",
+        subtabs: [
+          { title: "Controlled Components", description: "Input value is controlled by React state.", points: ["value prop", "onChange", "state update", "submit handler"], snippets: [{ label: "Controlled Input", code: "const [name, setName] = useState('');\n\n<input value={name} onChange={(e) => setName(e.target.value)} />" }] },
+          { title: "Uncontrolled Components", description: "Use refs when the DOM owns the current value.", points: ["useRef", "Read value on submit", "Simple forms", "When to avoid"] },
+          { title: "Form Submit", description: "Prevent default submit and process values.", points: ["onSubmit", "preventDefault", "Validation basics", "Reset form"] }
+        ],
+        flow: ["Build controlled form", "Submit values", "Show uncontrolled ref example"]
+      },
+       {
+        id: "day-15",
+        done: true,
+        title: "Day 15: useCallBack Hook and React.Memo",
+        series: "React JS Series",
+        accent: "#ec4899",
+        icon: "15",
+        summary: "useCallBack",
+        intro: "useCallBack",
+        subtabs: [
+          { title: "Controlled Components", description: "Input value is controlled by React state.", points: ["value prop", "onChange", "state update", "submit handler"], snippets: [{ label: "Controlled Input", code: "const [name, setName] = useState('');\n\n<input value={name} onChange={(e) => setName(e.target.value)} />" }] },
+          { title: "Uncontrolled Components", description: "Use refs when the DOM owns the current value.", points: ["useRef", "Read value on submit", "Simple forms", "When to avoid"] },
+          { title: "Form Submit", description: "Prevent default submit and process values.", points: ["onSubmit", "preventDefault", "Validation basics", "Reset form"] }
+        ],
+        flow: ["Build controlled form", "Submit values", "Show uncontrolled ref example"]
+      },
+      {
+        id: "day-16",
         done: false,
-        title: "Day 13: API States",
+        title: "Day 16: useMemo Hook",
+        series: "React JS Series",
+        accent: "#ec4899",
+        icon: "16",
+        summary: "useMemo => React Performance Optimization",
+        intro: "useMemo caches the returned value.",
+        subtabs: [
+          { title: "Controlled Components", description: "Input value is controlled by React state.", points: ["value prop", "onChange", "state update", "submit handler"], snippets: [{ label: "Controlled Input", code: "const [name, setName] = useState('');\n\n<input value={name} onChange={(e) => setName(e.target.value)} />" }] },
+          { title: "Uncontrolled Components", description: "Use refs when the DOM owns the current value.", points: ["useRef", "Read value on submit", "Simple forms", "When to avoid"] },
+          { title: "Form Submit", description: "Prevent default submit and process values.", points: ["onSubmit", "preventDefault", "Validation basics", "Reset form"] }
+        ],
+        flow: ["Build controlled form", "Submit values", "Show uncontrolled ref example"]
+      },
+      
+      
+      {
+        id: "day-15",
+        done: false,
+        title: "Day 14: Set-up ReactJs For Live Project",
+        series: "React JS Series",
+        accent: "#ec4899",
+        icon: "15",
+        summary: "How to Set-up Project Folders",
+        intro: "Project Folders- Seperation of Files",
+        subtabs: [
+          { title: "Controlled Components", description: "Input value is controlled by React state.", points: ["value prop", "onChange", "state update", "submit handler"], snippets: [{ label: "Controlled Input", code: "const [name, setName] = useState('');\n\n<input value={name} onChange={(e) => setName(e.target.value)} />" }] },
+          { title: "Uncontrolled Components", description: "Use refs when the DOM owns the current value.", points: ["useRef", "Read value on submit", "Simple forms", "When to avoid"] },
+          { title: "Form Submit", description: "Prevent default submit and process values.", points: ["onSubmit", "preventDefault", "Validation basics", "Reset form"] }
+        ],
+        flow: ["Build controlled form", "Submit values", "Show uncontrolled ref example"]
+      },
+      {
+        id: "day-122",
+        done: false,
+        title: "Day 14: React Hook Form",
+        series: "React JS Series",
+        accent: "#8b5cf6",
+        icon: "122",
+        summary: "React Hook Form with validation.",
+        intro: "Move from manual state forms to a scalable form library.",
+        subtabs: [
+          { title: "Setup", description: "Install and configure React Hook Form.", points: ["Install package", "useForm", "register", "handleSubmit"], snippets: [{ label: "Install", code: "npm install react-hook-form" }] },
+          { title: "Validation", description: "Add required, minLength, pattern, and error messages.", points: ["register rules", "formState.errors", "Show error", "Disable submit"] },
+          { title: "Submit Data", description: "Read validated form data with handleSubmit.", points: ["Typed form values", "Submit callback", "Reset", "Default values"] }
+        ],
+        flow: ["Install library", "Register inputs", "Add validation", "Submit data"]
+      },
+      
+      {
+        id: "day-16",
+        done: false,
+        title: "Day 16: Advanced Routing",
+        series: "React JS Series",
+        accent: "#0891b2",
+        icon: "16",
+        summary: "Nested routes, layout routes, and protected routes.",
+        intro: "Teach production-style route composition.",
+        subtabs: [
+          { title: "Nested Routes", description: "Render child routes with Outlet.", points: ["Parent route", "Outlet", "Child pages", "Nested navigation"] },
+          { title: "Layout Routes", description: "Share header/sidebar layouts across pages.", points: ["App layout", "Dashboard layout", "Outlet placement", "Reusable shell"] },
+          { title: "Protected Routes", description: "Restrict pages based on auth state.", points: ["Auth check", "Navigate redirect", "PrivateRoute", "Role-based route"] }
+        ],
+        flow: ["Create layout", "Add nested routes", "Build protected route"]
+      },
+      
+      {
+        id: "day-17",
+        done: false,
+        title: "Day 17: API States",
         series: "React JS Series",
         accent: "#f97316",
-        icon: "13",
+        icon: "17",
         summary: "Loading, error handling, retry, and reusable API services.",
         intro: "Make API screens feel professional and resilient.",
         subtabs: [
@@ -1079,12 +1260,12 @@
         flow: ["Add loading", "Add error", "Add retry", "Extract service"]
       },
       {
-        id: "day-14",
+        id: "day-18",
         done: false,
-        title: "Day 14: TanStack Query",
+        title: "Day 18: TanStack Query",
         series: "React JS Series",
         accent: "#14b8a6",
-        icon: "14",
+        icon: "18",
         summary: "useQuery, useMutation, and cache.",
         intro: "TanStack Query is the production way to manage server state in React.",
         subtabs: [
@@ -1095,12 +1276,12 @@
         flow: ["Setup QueryClient", "Fetch with useQuery", "Mutate data", "Invalidate cache"]
       },
       {
-        id: "day-15",
+        id: "day-19",
         done: false,
-        title: "Day 15: Context API",
+        title: "Day 19: Context API",
         series: "React JS Series",
         accent: "#6366f1",
-        icon: "15",
+        icon: "19",
         summary: "Context API for shared state.",
         intro: "Use Context for app-level values like theme, auth user, and language.",
         subtabs: [
@@ -1111,12 +1292,12 @@
         flow: ["Create context", "Build provider", "Consume value", "Add custom hook"]
       },
       {
-        id: "day-16",
+        id: "day-20",
         done: false,
-        title: "Day 16: useReducer",
+        title: "Day 20: useReducer",
         series: "React JS Series",
         accent: "#0f766e",
-        icon: "16",
+        icon: "20",
         summary: "useReducer for complex state.",
         intro: "useReducer helps when state transitions become more structured.",
         subtabs: [
@@ -1127,12 +1308,12 @@
         flow: ["Explain reducer", "Build todo reducer", "Dispatch actions", "Compare with useState"]
       },
       {
-        id: "day-17",
+        id: "day-21",
         done: false,
-        title: "Day 17: Custom Hooks",
+        title: "Day 21: Custom Hooks",
         series: "React JS Series",
         accent: "#84cc16",
-        icon: "17",
+        icon: "21",
         summary: "Extract reusable logic with custom hooks.",
         intro: "Custom hooks are how React developers share behavior without duplicating code.",
         subtabs: [
@@ -1143,12 +1324,12 @@
         flow: ["Find duplicated logic", "Extract custom hook", "Use in two components"]
       },
       {
-        id: "day-18",
+        id: "day-22",
         done: false,
-        title: "Day 18: Performance",
+        title: "Day 22: Performance",
         series: "React JS Series",
         accent: "#eab308",
-        icon: "18",
+        icon: "22",
         summary: "React.memo, useMemo, and useCallback.",
         intro: "Teach performance tools with clear warnings about premature optimization.",
         subtabs: [
@@ -1159,12 +1340,12 @@
         flow: ["Show re-render", "Use React.memo", "Add useMemo", "Add useCallback"]
       },
       {
-        id: "day-19",
+        id: "day-23",
         done: false,
-        title: "Day 19: Lazy Loading & Suspense",
+        title: "Day 23: Lazy Loading & Suspense",
         series: "React JS Series",
         accent: "#a855f7",
-        icon: "19",
+        icon: "23",
         summary: "Lazy loading, Suspense, and code splitting.",
         intro: "Improve initial load by splitting large pages and components.",
         subtabs: [
@@ -1175,12 +1356,12 @@
         flow: ["Create lazy component", "Wrap with Suspense", "Lazy-load route", "Explain bundle benefit"]
       },
       {
-        id: "day-20",
+        id: "day-24",
         done: false,
-        title: "Day 20: Production & Revision",
+        title: "Day 24: Production & Revision",
         series: "React JS Series",
         accent: "#111827",
-        icon: "20",
+        icon: "24",
         summary: "Testing, folder structure, production patterns, and interview revision.",
         intro: "Close the series by turning beginner knowledge into production habits and interview confidence.",
         subtabs: [
@@ -1239,7 +1420,7 @@
       detailsPanel.innerHTML = `
         <header class="details-head">
           <span class="lesson-label">${topic.done ? "Done Â· " : "Pending Â· "}${topic.series} Â· Episode Topic</span>
-          <h2>${topic.title}</h2>
+          <h3>${topic.title}</h3>
           <div class="topic-logo react-mark" aria-hidden="true">React</div>
         </header>
         <div class="details-body">
@@ -1316,17 +1497,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
